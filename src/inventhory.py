@@ -19,4 +19,12 @@ class Good():
         self.count: int = 1
     def calc_price(self) -> tuple[str, float]:
         '''    
+            calc the total price for
+            this good only (unit times the price)
         '''
+        return  (
+                # Mantain the same currency for be predictible
+                    self.price[0], 
+                # Price unit times only with 2 decimals    
+                    round(self.count * self.price[1], 2)
+                )
