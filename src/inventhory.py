@@ -80,4 +80,18 @@ class Inventory():
                 and update data
             '''
             self.items.append(product) 
-            self.update()   
+            self.update() 
+
+    def calc_price(self) -> tuple[str, float]:
+        '''
+            Calc the price making the sum 
+            of all goods prices
+        '''          
+        inventory_price: tuple[str, float] = (self.items[0], 0.00)
+        
+        for item in self.items:
+            # Sum the prices when are in the same currency
+            if (inventory_price[0] == item.calc_price()[0]):    
+                inventory_price[1] = round(inventory_price[1] + item.calc_price()[1], 2)
+        # Give as output the resultant price
+        return inventory_price        
