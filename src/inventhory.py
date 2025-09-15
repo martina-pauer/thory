@@ -94,4 +94,27 @@ class Inventory():
             if (inventory_price[0] == item.calc_price()[0]):    
                 inventory_price[1] = round(inventory_price[1] + item.calc_price()[1], 2)
         # Give as output the resultant price
-        return inventory_price        
+        return inventory_price 
+
+    def save(self):
+        '''
+            Save the info on the inventory
+            using a database scheme:
+
+                first level, inventories database
+                second level, this inventory database
+                third level, each good info tables
+        '''
+        consult = open('info.sql', 'a')
+        # Make database for all the inventories
+        consult.write('CREATE DATABASE inventories;')
+        # Do table for this invenetorie in particular
+        consult.write(f'CREATE TABLE inventory_{(self.items[0].name + self.items[1].name).replace(' ', '_')} (good_name varchar(255), available_units int, price FLOAT(6, 2);')
+        # Insert values from this inventory        
+        consult.close()
+        del consult
+        # use 'info.sql' file for build database
+        # remove file by security
+        import os
+        os.remove('info.sql')
+        del os # END OS LIFECYCLE BY SECURITY
