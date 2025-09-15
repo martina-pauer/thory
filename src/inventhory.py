@@ -56,3 +56,28 @@ class Inventory():
         self.goods: int = 1
 
         self.count: int = 0
+
+    def update(self):
+         '''
+            Check that all the properties
+            are up to the date
+         '''
+         if self.count < self.items.__len__():
+            for item in range((self.count - 1), self.items.__len__):
+                # Compare with the previous goods for new kinds
+                for other in range(0, self.count):
+                    different = (other.name != self.items[item].name)
+                # When is different the name to the all the goods then is new
+                if different:
+                    # Only count the different to before goods
+                    self.goods += 1    
+            # Count all the items doesn't matter the kind        
+            self.count = self.items.__len__()
+         
+    def add(self, product: Good):
+            '''
+                Add a new product to the inventory
+                and update data
+            '''
+            self.items.append(product) 
+            self.update()   
