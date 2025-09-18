@@ -115,9 +115,28 @@ class Inventory():
         for item in self.items:
                 consult.write(f'INSERT INTO {table_name} ({item.name}, {item.count}, {item.price[1]}, {item.price[0]})')
         consult.close()
+        # Load from the file and run in sqlite SQL manager
+        self.load('info.sql')
         del consult
-        # use 'info.sql' file for build database
         # remove file by security
         import os
         os.remove('info.sql')
         del os # END OS LIFECYCLE BY SECURITY
+
+    def load(self, file_name: str):
+        '''
+            Load SQL files with inventory_<hash>
+            styles tables with the columns:
+                good_name, 
+                available_units,
+                price,
+                currency
+        '''
+        data = open(file_name, 'r')    
+
+        for command in data.readlines():
+            command = command.replace('\n', '')
+            # Run with sqlite3
+            import sqlite3
+            
+        data.close()    
