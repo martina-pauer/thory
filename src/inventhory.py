@@ -108,9 +108,12 @@ class Inventory():
         consult = open('info.sql', 'a')
         # Make database for all the inventories
         consult.write('CREATE DATABASE inventories;')
-        # Do table for this invenetorie in particular
-        consult.write(f'CREATE TABLE inventory_{(self.items[0].name + self.items[1].name).replace(' ', '_')} (good_name varchar(255), available_units int, price FLOAT(6, 2);')
+        # Do table for this invenetory in particular
+        table_name = f'inventory_{hash(self)}'
+        consult.write(f'CREATE TABLE {table_name} (good_name varchar(255), available_units int, price FLOAT(6, 2), currency varchar(3);')
         # Insert values from this inventory        
+        for item in self.items:
+                consult.write(f'INSERT INTO {table_name} ({item.name}, {item.count}, {item.price[1]}, {item.price[0]})')
         consult.close()
         del consult
         # use 'info.sql' file for build database
