@@ -134,9 +134,15 @@ class Inventory():
         '''
         data = open(file_name, 'r')    
 
+        import sqlite3
+        connection = sqlite3.connect('inventory.db')
+        cursor = connection.cursor()
+        
         for command in data.readlines():
             command = command.replace('\n', '')
             # Run with sqlite3
-            import sqlite3
+            cursor.execute(command)
+            connection.commit()
+        connection.close()
             
         data.close()    
