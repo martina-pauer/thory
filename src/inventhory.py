@@ -110,6 +110,7 @@ class Inventory():
         consult.write('CREATE DATABASE inventories;')
         # Do table for this invenetory in particular
         table_name = f'inventory_{hash(self)}'
+        # good_name, available_units, price, currency
         consult.write(f'CREATE TABLE {table_name} (good_name varchar(255), available_units int, price FLOAT(6, 2), currency varchar(3);')
         # Insert values from this inventory        
         for item in self.items:
