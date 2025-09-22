@@ -109,7 +109,11 @@ class Inventory():
         # Make database for all the inventories
         consult.write('CREATE DATABASE inventories;')
         # Do table for this invenetory in particular
-        table_name = f'inventory_{hash(self)}'
+        import time
+        # Use name format for table: inventory_year_month_day
+        table_name = f'inventory_{time.localtime().tm_year}_{time.localtime().tm_mon}_{time.localtime().tm_mday}'
+        # Free ram
+        del time
         # good_name, available_units, price, currency
         consult.write(f'CREATE TABLE {table_name} (good_name varchar(255), available_units int, price FLOAT(6, 2), currency varchar(3);')
         # Insert values from this inventory        
@@ -126,7 +130,7 @@ class Inventory():
 
     def load(self, file_name: str):
         '''
-            Load SQL files with inventory_<hash>
+            Load SQL files with inventory_<year>_<month>_<day>
             styles tables with the columns:
                 good_name, 
                 available_units,
