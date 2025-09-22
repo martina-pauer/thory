@@ -108,7 +108,7 @@ class Inventory():
         consult = open('info.sql', 'a')
         # Make database for all the inventories
         consult.write('CREATE DATABASE inventories;')
-        # Do table for this invenetory in particular
+        # Do table for this inventory in particular
         import time
         # Use name format for table: inventory_year_month_day
         table_name = f'inventory_{time.localtime().tm_year}_{time.localtime().tm_mon}_{time.localtime().tm_mday}'
