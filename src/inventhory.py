@@ -106,19 +106,14 @@ class Inventory():
                 third level, each good info tables
         '''
         consult = open('info.sql', 'a')
-        # Make database for all the inventories
-        consult.write('CREATE DATABASE inventories;')
         # Do table for this inventory in particular
-        import time
-        # Use name format for table: inventory_year_month_day
-        table_name = f'inventory_{time.localtime().tm_year}_{time.localtime().tm_mon}_{time.localtime().tm_mday}'
-        # Free ram
-        del time
-        # good_name, available_units, price, currency
-        consult.write(f'CREATE TABLE {table_name} (good_name varchar(255), available_units int, price FLOAT(6, 2), currency varchar(3);')
+        table_name = f'inventory_items'
+        # Columns in table: moment, good_name, available_units, price, currency
+        consult.write(f'CREATE TABLE {table_name} (moment timestamp good_name varchar(255), available_units int, price FLOAT(8, 2), currency varchar(3);')
+        del table_name
         # Insert values from this inventory        
         for item in self.items:
-                consult.write(f'INSERT INTO {table_name}(good_name, available_units, price, currency) VALUES ({item.name}, {item.count}, {item.price[1]}, {item.price[0]});')
+                consult.write(f'INSERT INTO {table_name}(moment, good_name, available_units, price, currency) VALUES (CURRENT_TIMESTAMP, {item.name}, {item.count}, {item.price[1]}, {item.price[0]});')
         consult.close()
         # Load from the file and run in sqlite SQL manager
         self.load('info.sql')
