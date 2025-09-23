@@ -141,7 +141,11 @@ class Inventory():
         for command in data.readlines():
             command = command.replace('\n', '')
             # Run with sqlite3
-            cursor.execute(command)
+            try:
+                # Handle exceptions like table already created or similar
+                cursor.execute(command)
+            except:
+                print(f'Mistake in SQL command {command}')    
             connection.commit()
         connection.close()
             
