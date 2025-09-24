@@ -18,6 +18,21 @@ class Good():
 
         self.count: int = 1
         
+    def fix_types(self):
+        '''
+            Type correction for security reasons
+        '''    
+        self.name: str = self.name.__str__()
+        
+        try:
+            self.count: int = int(self.count)
+        except:
+            print('- Good.count must be still as integer\n')
+        try:
+            self.price: tuple[str, float] = (self.price[0].__str__(), float(self.price[1]))
+        except:
+            print('- Good.price must be a 2 fields tuple text and floating point\n')    
+        
     def calc_price(self) -> tuple[str, float]:
         '''    
             calc the total price for
@@ -107,13 +122,13 @@ class Inventory():
         '''
         consult = open('info.sql', 'a')
         # Do table for this inventory in particular
-        table_name = f'inventory_items'
         # Columns in table: moment, good_name, available_units, price, currency
-        consult.write(f'CREATE TABLE {table_name} (moment timestamp good_name varchar(255), available_units int, price FLOAT(8, 2), currency varchar(3);')
+        consult.write('CREATE TABLE inventory_items (moment timestamp good_name varchar(255), available_units int, price FLOAT(8, 2), currency varchar(3);')
         del table_name
         # Insert values from this inventory        
         for item in self.items:
-                consult.write(f'INSERT INTO {table_name}(moment, good_name, available_units, price, currency) VALUES (CURRENT_TIMESTAMP, {item.name}, {item.count}, {item.price[1]}, {item.price[0]});')
+                item.fix_types()
+                consult.write(f'INSERT INTO inventory_items(moment, good_name, available_units, price, currency) VALUES (CURRENT_TIMESTAMP, {item.name}, {item.count}, {item.price[1]}, {item.price[0]});')
         consult.close()
         # Load from the file and run in sqlite SQL manager
         self.load('info.sql')
@@ -125,8 +140,9 @@ class Inventory():
 
     def load(self, file_name: str):
         '''
-            Load SQL files with inventory_<year>_<month>_<day>
-            styles tables with the columns:
+            Load SQL files with inventory_item table
+            with the columns:
+                moment,
                 good_name, 
                 available_units,
                 price,
