@@ -111,7 +111,7 @@ class Inventory():
         # Give as output the resultant price
         return inventory_price 
 
-    def save(self):
+    def save(self) -> str:
         '''
             Save the info on the inventory
             using a database scheme:
@@ -119,6 +119,8 @@ class Inventory():
                 first level, inventories database
                 second level, this inventory database
                 third level, each good info tables
+
+            Return the resultant SQL table    
         '''
         consult = open('info.sql', 'a')
         # Do table for this inventory in particular
@@ -130,15 +132,17 @@ class Inventory():
                 item.fix_types()
                 consult.write(f'INSERT INTO inventory_items(moment, good_name, available_units, price, currency) VALUES (CURRENT_TIMESTAMP, {item.name}, {item.count}, {item.price[1]}, {item.price[0]});')
         consult.close()
-        # Load from the file and run in sqlite SQL manager
-        self.load('info.sql')
         del consult
+        # Load from the file and run in sqlite SQL manager
+        result: str = self.load('info.sql')
         # remove file by security
         import os
         os.remove('info.sql')
         del os # END OS LIFECYCLE BY SECURITY
+        # Give the table as text to the next process
+        return result
 
-    def load(self, file_name: str):
+    def load(self, file_name: str) -> str:
         '''
             Load SQL files with inventory_item table
             with the columns:
@@ -147,6 +151,8 @@ class Inventory():
                 available_units,
                 price,
                 currency
+
+            Return the text with the data as table.    
         '''
         data = open(file_name, 'r')    
 
@@ -163,6 +169,26 @@ class Inventory():
             except:
                 print(f'Mistake in SQL command {command}')    
             connection.commit()
+        # Run a select command for make work fetchall method 
+        cursor.execute('SELECT * FROM inventory_items')   
+        # Format table as text string
+        table: str = '|  Date  |  Good Name  |  Units  |  Price    |'
+        for row in cursor.fetchall():
+                # Run one time the fetchall method for add rows
+                table += (
+                            # Date
+                            '|  ' + row[0] + '  |  '
+                            # Name of product
+                            + row[1] + '  |  '
+                            # Units on stock
+                            + row[2] + '  |  ' 
+                            # Price
+                            + row[4] + '  ' + row[3] 
+                            + '  |  '
+                        )    
         connection.close()
-            
-        data.close()    
+        del connection, sqlite3    
+        data.close() 
+        del data
+        # Give data  
+        return table  
