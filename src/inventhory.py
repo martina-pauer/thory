@@ -172,7 +172,7 @@ class Inventory():
         # Run a select command for make work fetchall method 
         cursor.execute('SELECT * FROM inventory_items')   
         # Format table as text string
-        table: str = '|  Date  |  Good Name  |  Units  |  Price    |'
+        table: str = '|  Date  |  Good Name  |  Units  |  Price    |\n'
         for row in cursor.fetchall():
                 # Run one time the fetchall method for add rows
                 table += (
@@ -184,7 +184,7 @@ class Inventory():
                             + row[2] + '  |  ' 
                             # Price
                             + row[4] + '  ' + row[3] 
-                            + '  |  '
+                            + '  |  \n'
                         )    
         connection.close()
         del connection, sqlite3    
