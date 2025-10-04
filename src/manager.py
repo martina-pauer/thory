@@ -1,9 +1,9 @@
 import gi
 gi.require_version('Gtk', '3.0')
-import Gtk
-import Gdk
+from gi.repository import Gtk
+from gi.repository import Gdk
 
-class Tables(Gtk.window):
+class Tables(Gtk.Window):
     def __init__(self, tab: str, window_size: tuple[int, int]):
         '''
             Make easier GTK window with tables to
@@ -16,6 +16,10 @@ class Tables(Gtk.window):
 
             Tables.outs_container, block for outputs
         '''
+        # Set title, width in pixels and height in pixels
+        super().__init__(title = 'Stock')
+        self.set_size_request(window_size[0], window_size[1])
+        # Object properties
         self.table: str = tab
         
         self.ins_container = Gtk.VBox()
@@ -64,11 +68,35 @@ class Tables(Gtk.window):
             Give custom style from
             CSS file
         '''    
-        pass
+        theme = Gtk.CssProvider()
+
+        content = ''
+
+        with open(css_filename, 'rb') as data:
+            content = data.read()
+
+        theme.load_from_data(content)
+
+        context = Gtk.StyleContex()
+
+        viewer = Gdk.Screen()
+
+        context.add_provider_for_screen (
+                                            viewer.get_default(),
+                                            theme,
+                                            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+                                        )    
 
     def run(self):
          '''
             Show the current graphical
             interface
          '''
-         pass
+         self.connect('delete-event', Gtk.main_quit)
+         try:
+            self.add(self.ins_container)
+            self.add(self.outs_container)
+            self.show_all()
+            Gtk.main()
+         except:
+            self.close()   
