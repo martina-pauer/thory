@@ -53,8 +53,12 @@ class Tables(Gtk.Window):
             '''
                 Define columns names
             '''
+            text = ''
             for name in names:
-                 pass
+                 text += f'| {name} '
+            self.add(
+                        Gtk.Label(label = text + self.table)
+                    )     
             
     def parametric_input(self, parameters: list[str], property_name: str):
          '''
