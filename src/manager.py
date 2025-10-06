@@ -57,7 +57,7 @@ class Tables(Gtk.Window):
             for name in names:
                  text += f'| {name} '
             self.add(
-                        Gtk.Label(label = text + self.table)
+                        Gtk.Label(label = text)
                     )     
             
     def parametric_input(self, parameters: list[str], property_name: str):
