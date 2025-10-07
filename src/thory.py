@@ -2,7 +2,9 @@
 from manager import Tables
 import inventhory
 
-app = Tables(inventhory.Inventory.save(), (300, 300))
+stock = inventhory.Inventory()
+
+app = Tables(stock.save(), (300, 300))
 # Define the data getting
 app.set_inputs(
         [
