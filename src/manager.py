@@ -32,12 +32,12 @@ class Tables(Gtk.Window):
             to the inputs container
         '''
         for input_data in inputs:
-            self.ins_container.add(
-                    Gtk.Entry
-                    (
-                        label = input_data
-                    )
-                )
+            # Create Text input for data
+            input_object = Gtk.Entry()
+            input_object.set_placeholder_text(input_data)
+            # Add object to inputs section
+            self.ins_container.add(input_object)
+            del input_object
             
     def last_outputs(self, outputs: list):
         '''
@@ -56,16 +56,34 @@ class Tables(Gtk.Window):
             text = ''
             for name in names:
                  text += f'| {name} '
-            self.add(
-                        Gtk.Label(label = text)
-                    )     
+            # Add columns names and later table content     
+            self.outs_container.add(
+                        Gtk.Label(label = f'{text}\n{self.table}')
+                    ) 
+            # Clean memory for optimize and get more for the next process
+            del text    
             
     def parametric_input(self, parameters: list[str], property_name: str):
          '''
             Select paramater from menu
             and give it value
-         '''            
-         pass   
+         '''  
+         # Combo button with menu of options          
+         button = Gtk.ComboBoxText()
+         button.set_entry_text_column(0)
+         button.connect('changed', self.on_button_changed) 
+         # Add identifier category and options to select
+         for option in parameters:
+            button.append_text(option)
+         self.ins_container.add(button)
+         del button
+         getter = Gtk.Entry()
+         getter.set_placeholder_text(property_name)
+         container = Gtk.HBox()
+         container.add(getter)
+         del getter
+         self.ins_container.add(container)
+         del container   
 
     def get_style(self, css_filename: str):
         '''
