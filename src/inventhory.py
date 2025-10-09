@@ -6,7 +6,7 @@ class Good():
 
             Good.name -> str, default class constructor arg
         
-            Godd.price -> tuple[str, float], default ARS 1000.00
+            Good.price -> tuple[str, float], default ARS 1000.00
 
             Good.count -> int, default 1 unit available
     '''
@@ -39,7 +39,7 @@ class Good():
             this good only (unit times the price)
         '''
         return  (
-                # Mantain the same currency for be predictible
+                # Mantain the same currency for be more predictible
                     self.price[0], 
                 # Price unit times only with 2 decimals    
                     round(self.count * self.price[1], 2)
@@ -133,10 +133,10 @@ class Inventory():
         consult.close()
         del consult
         # Load from the file and run in sqlite SQL manager
-        result: str = self.load('info.sql')
+        result: str = self.load('info.sqlite')
         # remove file by security
         import os
-        os.remove('info.sql')
+        os.remove('info.sqlite')
         del os # END OS LIFECYCLE BY SECURITY
         # Give the table as text to the next process
         return result
@@ -171,7 +171,7 @@ class Inventory():
         # Run a select command for make work fetchall method 
         cursor.execute('SELECT * FROM inventory_items')   
         # Format table as text string
-        table: str = '|  Date  |  Good Name  |  Units  |  Price    |\n'
+        table: str = ''
         for row in cursor.fetchall():
                 # Run one time the fetchall method for add rows
                 table += (
