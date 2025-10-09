@@ -125,11 +125,11 @@ class Inventory():
         consult = open('info.sql', 'a')
         # Do table for this inventory in particular
         # Columns in table: moment, good_name, available_units, price, currency
-        consult.write('CREATE TABLE inventory_items (moment timestamp good_name varchar(255), available_units int, price FLOAT(8, 2), currency varchar(3);')
+        consult.write('CREATE TABLE inventory_items (moment timestamp good_name varchar(255), available_units int, price FLOAT(8, 2), currency varchar(3));')
         # Insert values from this inventory        
         for item in self.items:
                 item.fix_types()
-                consult.write(f'INSERT INTO inventory_items(moment, good_name, available_units, price, currency) VALUES (CURRENT_TIMESTAMP, {item.name}, {item.count}, {item.price[1]}, {item.price[0]});')
+                consult.write(f"INSERT INTO inventory_items(moment, good_name, available_units, price, currency) VALUES (CURRENT_TIMESTAMP, {item.name}, {item.count}, {item.price[1]}, '{item.price[0]}');")
         consult.close()
         del consult
         # Load from the file and run in sqlite SQL manager
@@ -169,7 +169,7 @@ class Inventory():
                 print(f'Mistake in SQL command {command}')    
             connection.commit()
         # Run a select command for make work fetchall method 
-        cursor.execute('SELECT * FROM inventory_items')   
+        cursor.execute('SELECT * FROM inventory_items;')   
         # Format table as text string
         table: str = ''
         for row in cursor.fetchall():
@@ -190,4 +190,4 @@ class Inventory():
         data.close() 
         del data
         # Give data  
-        return table  
+        return table
