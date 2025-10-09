@@ -17,7 +17,6 @@ watch.count = 2
 
 for product in [shirt, pants, watch]:
     stock.add(product)
-    stock.update()
 # Main code    
 app = Tables(stock.save(), (300, 300))
 # Define the data getting

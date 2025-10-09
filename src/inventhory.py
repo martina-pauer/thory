@@ -6,7 +6,7 @@ class Good():
 
             Good.name -> str, default class constructor arg
         
-            Good.price -> tuple[str, float], default ARS 1000.00
+            Good.price -> list[str, float], default ARS 1000.00
 
             Good.count -> int, default 1 unit available
     '''
@@ -14,7 +14,7 @@ class Good():
         
         self.name: str = name        
 
-        self.price: tuple[str, float] = ('ARS', 1000.00)
+        self.price: list[str, float] = ('ARS', 1000.00)
 
         self.count: int = 1
         
@@ -29,11 +29,11 @@ class Good():
         except:
             print('- Good.count must be still as integer\n')
         try:
-            self.price: tuple[str, float] = (self.price[0].__str__(), float(self.price[1]))
+            self.price: list[str, float] = [self.price[0].__str__(), float(self.price[1])]
         except:
             print('- Good.price must be a 2 fields tuple text and floating point\n')    
         
-    def calc_price(self) -> tuple[str, float]:
+    def calc_price(self) -> list[str, float]:
         '''    
             calc the total price for
             this good only (unit times the price)
@@ -97,12 +97,12 @@ class Inventory():
             self.items.append(product) 
             self.update() 
 
-    def calc_price(self) -> tuple[str, float]:
+    def calc_price(self) -> list[str, float]:
         '''
             Calc the price making the sum 
             of all goods prices
         '''          
-        inventory_price: tuple[str, float] = (self.items[0], 0.00)
+        inventory_price: list[str, float] = [self.items[0], 0.00]
         
         for item in self.items:
             # Sum the prices when are in the same currency
