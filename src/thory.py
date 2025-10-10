@@ -6,11 +6,11 @@ stock = inventhory.Inventory()
 # Example until know how add products to the table from the inputs
 shirt = inventhory.Good('T-Shirt')
 shirt.count = 3
-shirt.price[1] *= 3
+shirt.price[1] *= 3.00
 
 pants = inventhory.Good('Jeans')
 pants.count = (shirt.count * 2)
-pants.price[1] = (shirt.price / 2)
+pants.price[1] = (shirt.price[1] / 2)
 
 watch = inventhory.Good('Watches')
 watch.count = 2

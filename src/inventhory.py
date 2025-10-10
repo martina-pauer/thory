@@ -6,7 +6,7 @@ class Good():
 
             Good.name -> str, default class constructor arg
         
-            Good.price -> list[str, float], default ARS 1000.00
+            Good.price -> list[str, float], default ARS 3000.00
 
             Good.count -> int, default 1 unit available
     '''
@@ -14,7 +14,7 @@ class Good():
         
         self.name: str = name        
 
-        self.price: list[str, float] = ('ARS', 1000.00)
+        self.price: list[str, float] = ['ARS', 3000.00]
 
         self.count: int = 1
         
@@ -122,7 +122,7 @@ class Inventory():
 
             Return the resultant SQL table    
         '''
-        consult = open('info.sql', 'a')
+        consult = open('info.sqlite', 'a')
         # Do table for this inventory in particular
         # Columns in table: moment, good_name, available_units, price, currency
         consult.write('CREATE TABLE inventory_items (moment timestamp good_name varchar(255), available_units int, price FLOAT(8, 2), currency varchar(3));')
