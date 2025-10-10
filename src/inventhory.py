@@ -78,14 +78,14 @@ class Inventory():
             are up to the date
          '''
          if self.count < self.items.__len__():
-            for item in range((self.count - 1), self.items.__len__):
+            for item in range((self.count - 1), self.items.__len__()):
                 # Compare with the previous goods for new kinds
                 for other in range(0, self.count):
-                    different = (other.name != self.items[item].name)
+                    different = (self.items[other].name != self.items[item].name)
                 # When is different the name to the all the goods then is new
-                if different:
-                    # Only count the different to before goods
-                    self.goods += 1    
+                    if different:
+                        # Only count the different to before goods
+                        self.goods += 1    
             # Count all the items doesn't matter the kind        
             self.count = self.items.__len__()
          
@@ -165,26 +165,29 @@ class Inventory():
             try:
                 # Handle exceptions like table already created or similar
                 cursor.execute(command)
+                connection.commit()
             except:
-                print(f'Mistake in SQL command {command}')    
-            connection.commit()
+                print(f'Mistake in SQL command {command}')
         # Run a select command for make work fetchall method 
-        cursor.execute('SELECT * FROM inventory_items;')   
-        # Format table as text string
         table: str = ''
-        for row in cursor.fetchall():
-                # Run one time the fetchall method for add rows
-                table += (
-                            # Date
-                            '|  ' + row[0] + '  |  '
-                            # Name of product
-                            + row[1] + '  |  '
-                            # Units on stock
-                            + row[2] + '  |  ' 
-                            # Price
-                            + row[4] + '  ' + row[3] 
-                            + '  |  \n'
-                        )    
+        try:
+            cursor.execute('SELECT * FROM inventory_items;')   
+            # Format table as text string
+            for row in cursor.fetchall():
+                 # Run one time the fetchall method for add rows
+                    table += (
+                                # Date
+                                '|  ' + row[0] + '  |  '
+                                # Name of product
+                                + row[1] + '  |  '
+                                # Units on stock
+                                + row[2] + '  |  ' 
+                                # Price
+                                + row[4] + '  ' + row[3] 
+                                + '  |  \n'
+                            )    
+        except:
+            print('Waiting for inventory_items table creation...\n')                    
         connection.close()
         del connection, sqlite3    
         data.close() 
