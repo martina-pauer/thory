@@ -31,6 +31,7 @@ app.parametric_input(
         ['ARS', 'USD', '€', '¥'],
         'Price'    
 )
+
 # Give name to the columns
 app.set_columns(
         [
@@ -39,12 +40,19 @@ app.set_columns(
         ]
     )
 # Define the text to show
+stock
 app.last_outputs(
-    # Show the price of all the stock
-    stock.calc_price()[0],
-    stock.calc_price()[1]
+    # Show the price of all the stock,
+    stock.calc_price()
 )
 # Customize with own style
 #app.get_style('gtk_theme.css')
 # Show the interface when get all
 app.run()
+# Convert price of products
+for product in stock.goods:
+    if product.price[0] == 'ARS':
+        # The convert from lower to greater is 1 divided price for buy one great
+        product.convert((1451.00 ** (-1)), app.option)
+        print(app.option)
+        print(product.ins_container)

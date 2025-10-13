@@ -12,6 +12,8 @@ class Tables(Gtk.Window):
 
             Tables.table, text for the table
 
+            Tables.option, text with selected option from parametric input
+            
             Tables.ins_container, block for inputs
 
             Tables.outs_container, block for outputs
@@ -21,10 +23,12 @@ class Tables(Gtk.Window):
         self.set_size_request(window_size[0], window_size[1])
         # Object properties
         self.table: str = tab
-        
-        self.ins_container = Gtk.VBox()
 
-        self.outs_container = Gtk.HBox()
+        self.option: str = ''
+        
+        self.ins_container: Gtk.VBox = Gtk.VBox()
+
+        self.outs_container: Gtk.HBox = Gtk.HBox()
         
     def set_inputs(self, inputs: list[str]):
         '''
@@ -71,7 +75,7 @@ class Tables(Gtk.Window):
          # Combo button with menu of options          
          button = Gtk.ComboBoxText()
          button.set_entry_text_column(0)
-         button.connect('changed', self.on_button_changed) 
+         button.connect('changed', self.on_currency_changed) 
          # Add identifier category and options to select
          for option in parameters:
             button.append_text(option)
@@ -85,6 +89,13 @@ class Tables(Gtk.Window):
          self.ins_container.add(container)
          del container   
 
+    def on_currency_changed(self, menu: Gtk.ComboBoxText):
+        '''
+            Get the selected option
+            from List Button (ComboBoxText)
+        '''
+        self.option = menu.get_active_text()
+        
     def get_style(self, css_filename: str):
         '''
             Give custom style from
