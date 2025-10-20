@@ -65,10 +65,10 @@ class Tables(Gtk.Window):
             '''
             text: str = ''
             for name in names:
-                 text += f'| {name} '
+                 text += f'|\t{name}\t '
             # Add columns names and later table content     
             self.outs_container.pack_start(
-                                        Gtk.Label(label = f'{text}\n{self.table}'), True,
+                                        Gtk.Label(label = f'{text}|\t\n{self.table}'), True,
                                         True, 0
             ) 
             # Clean memory for optimize and get more for the next process

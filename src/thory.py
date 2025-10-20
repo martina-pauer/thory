@@ -53,5 +53,5 @@ app.run()
 for product in stock.items:
     if product.price[0] == 'ARS':
         # The convert from lower to greater is 1 divided price for buy one great
-        product.convert((1451.00 ** (-1)), app.option)
+        product.convert((1527.00 ** (-1)), app.option)
 print(app.table)
