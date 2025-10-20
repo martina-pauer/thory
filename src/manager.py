@@ -135,7 +135,7 @@ class Tables(Gtk.Window):
 
         theme.load_from_data(content)
 
-        context = Gtk.StyleContex()
+        context = Gtk.StyleContext()
 
         viewer = Gdk.Screen()
 

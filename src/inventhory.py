@@ -107,8 +107,7 @@ class Inventory():
         for item in self.items:
             # Sum the prices when are in the same currency
             if (inventory_price[0] == item.price[0]):    
-                inventory_price[1] += item.calc_price()[1]
-        del inventory_price        
+                inventory_price[1] += item.calc_price()[1]      
         # Give as output the resultant price
         return inventory_price 
 
