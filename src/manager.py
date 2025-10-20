@@ -28,7 +28,7 @@ class Tables(Gtk.Window):
         
         self.ins_container: Gtk.VBox = Gtk.VBox()
 
-        self.outs_container: Gtk.HBox = Gtk.HBox()
+        self.outs_container: Gtk.VBox = Gtk.VBox()
         
     def set_inputs(self, inputs: list[str]):
         '''
@@ -40,7 +40,7 @@ class Tables(Gtk.Window):
             input_object = Gtk.Entry()
             input_object.set_placeholder_text(input_data)
             # Update interface everytime the input changes
-            input_object.connect('changed', self.run)
+            input_object.connect('changed', self.update_table)
             # Add object to inputs section: Use recommended method for more widgest
             self.ins_container.pack_start(
                                             input_object, True, 
@@ -104,6 +104,16 @@ class Tables(Gtk.Window):
          )
          del container   
 
+    def update_table(self, widget: Gtk.Entry):
+        '''
+            Event for input change of
+            all the inputs
+        '''
+        text = widget.get_text()
+        # Update table with new data
+        self.table += f'\t{text}\t'
+        del text
+        
     def on_currency_changed(self, menu: Gtk.ComboBoxText):
         '''
             Get the selected option
@@ -143,12 +153,12 @@ class Tables(Gtk.Window):
          self.connect('delete-event', Gtk.main_quit)
          try:
             # Add one container inside of other for get all the view
-            self.outs_container.pack_start(
-                                            self.ins_container, True,
+            self.ins_container.pack_start(
+                                            self.outs_container, True,
                                             True, 0
             )
             # Gtk.Window only have add method for add containers
-            self.add(self.outs_container)
+            self.add(self.ins_container)
             self.show_all()
             Gtk.main()
          except:

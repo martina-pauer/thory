@@ -177,7 +177,7 @@ class Inventory():
                  # Run one time the fetchall method for add rows
                     table += (
                                 # Date
-                                '|  ' + row[0] + '  |  '
+                                '\n|  ' + row[0] + '  |  '
                                 # Name of product
                                 + row[1] + '  |  '
                                 # Units on stock

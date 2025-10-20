@@ -1,0 +1,11 @@
+*, GtkEntry
+{
+    background-color: #fcf2f2;
+    color: #d4158b;
+}
+
+GtkEntry
+{
+    border-radius: 20%;
+
+}

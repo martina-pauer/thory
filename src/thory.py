@@ -46,12 +46,12 @@ app.last_outputs(
     stock.calc_price()
 )
 # Customize with own style
-#app.get_style('gtk_theme.css')
+app.get_style('gtk_theme.css')
 # Show the interface when get all
 app.run()
 # Convert price of products
 for product in stock.items:
     if product.price[0] == 'ARS':
         # The convert from lower to greater is 1 divided price for buy one great
-        product.convert((1527.00 ** (-1)), app.option)
+        product.convert((1533.00 ** (-1)), app.option)
 print(app.table)
