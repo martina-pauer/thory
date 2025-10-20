@@ -102,12 +102,13 @@ class Inventory():
             Calc the price making the sum 
             of all goods prices
         '''          
-        inventory_price: list[str, float] = [self.items[0], 0.00]
+        inventory_price: list[str, float] = [self.items[0].price[0], 0.00]
         
         for item in self.items:
             # Sum the prices when are in the same currency
-            if (inventory_price[0] == item.calc_price()[0]):    
-                inventory_price[1] = round(inventory_price[1] + item.calc_price()[1], 2)
+            if (inventory_price[0] == item.price[0]):    
+                inventory_price[1] += item.calc_price()[1]
+        del inventory_price        
         # Give as output the resultant price
         return inventory_price 
 
