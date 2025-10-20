@@ -38,7 +38,7 @@ app.set_columns(
             'Date', 'Name',
             'Units', 'Price'
         ]
-    )
+)
 # Define the text to show
 stock
 app.last_outputs(
@@ -50,9 +50,8 @@ app.last_outputs(
 # Show the interface when get all
 app.run()
 # Convert price of products
-for product in stock.goods:
+for product in stock.items:
     if product.price[0] == 'ARS':
         # The convert from lower to greater is 1 divided price for buy one great
         product.convert((1451.00 ** (-1)), app.option)
-        print(app.option)
-        print(product.ins_container)
+print(app.table)

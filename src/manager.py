@@ -39,31 +39,38 @@ class Tables(Gtk.Window):
             # Create Text input for data
             input_object = Gtk.Entry()
             input_object.set_placeholder_text(input_data)
-            # Add object to inputs section
-            self.ins_container.add(input_object)
+            # Update interface everytime the input changes
+            input_object.connect('changed', self.run)
+            # Add object to inputs section: Use recommended method for more widgest
+            self.ins_container.pack_start(
+                                            input_object, True, 
+                                            True, 0
+            )
             del input_object
             
-    def last_outputs(self, outputs: list):
+    def last_outputs(self, outputs: list[str]):
         '''
             Give text to display
             in the end
         '''
         for output in outputs:
-            self.outs_container.add(
-                Gtk.Label(output)
+            self.outs_container.pack_start(
+                Gtk.Label(output), True,
+                True, 0
             )
 
     def set_columns(self, names: list[str]):
             '''
                 Define columns names
             '''
-            text = ''
+            text: str = ''
             for name in names:
                  text += f'| {name} '
             # Add columns names and later table content     
-            self.outs_container.add(
-                        Gtk.Label(label = f'{text}\n{self.table}')
-                    ) 
+            self.outs_container.pack_start(
+                                        Gtk.Label(label = f'{text}\n{self.table}'), True,
+                                        True, 0
+            ) 
             # Clean memory for optimize and get more for the next process
             del text    
             
@@ -79,14 +86,22 @@ class Tables(Gtk.Window):
          # Add identifier category and options to select
          for option in parameters:
             button.append_text(option)
-         self.ins_container.add(button)
+         # Use the better for add more than one widget   
+         self.ins_container.pack_start(
+                                        button, True,
+                                        True, 0
+         )
          del button
          getter = Gtk.Entry()
          getter.set_placeholder_text(property_name)
          container = Gtk.HBox()
          container.add(getter)
          del getter
-         self.ins_container.add(container)
+         # Use pack_start method for various widgets adding on containers
+         self.ins_container.pack_start(
+                                        container, True,
+                                        True, 0
+         )
          del container   
 
     def on_currency_changed(self, menu: Gtk.ComboBoxText):
@@ -127,7 +142,12 @@ class Tables(Gtk.Window):
          '''
          self.connect('delete-event', Gtk.main_quit)
          try:
-            self.add(self.ins_container)
+            # Add one container inside of other for get all the view
+            self.outs_container.pack_start(
+                                            self.ins_container, True,
+                                            True, 0
+            )
+            # Gtk.Window only have add method for add containers
             self.add(self.outs_container)
             self.show_all()
             Gtk.main()
