@@ -1,11 +1,18 @@
-*, GtkEntry
+*
 {
-    background-color: #871e86;
+    background-color: #e71f76;
     color: #fcf2f2;
 }
 
-GtkEntry
+entry
 {
-    border-radius: 20%;
+    border-radius: 2%;
+    background-color: #fcf2f2;
+    color: #4c300d;
     border-color: #fcf2f2;
+}
+
+entry:hover
+{
+    background-color: #add8e6;
 }
