@@ -25,6 +25,10 @@ class Tables(Gtk.Window):
         self.table: str = tab
 
         self.option: str = ''
+
+        self.changes: int = 0
+        
+        self.entries: int = 0
         
         self.ins_container: Gtk.VBox = Gtk.VBox()
 
@@ -47,6 +51,8 @@ class Tables(Gtk.Window):
                                             True, 0
             )
             del input_object
+            # Count one entry more
+            self.entries += 1
             
     def last_outputs(self, outputs: list[str]):
         '''
@@ -109,10 +115,21 @@ class Tables(Gtk.Window):
             Event for input change of
             all the inputs
         '''
-        text = widget.get_text()
-        # Update table with new data
-        self.table += f'\t{text}\t'
-        del text
+        # When all the entry change knowing how much add all
+        if self.changes == self.entries:
+            # Make the table output
+            text = widget.get_text()
+            # Update table with new data
+            self.table += f'\t{text}\t'
+            del text            
+            self.outs_container.pack_start (
+                                                Gtk.Label(label = self.table), True,
+                                                True, 0
+            )
+            # Restart for count again after complete info
+            self.changes = 1
+        # Count every change on each entry    
+        self.changes += 1    
         
     def on_currency_changed(self, menu: Gtk.ComboBoxText):
         '''
