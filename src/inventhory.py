@@ -171,9 +171,8 @@ class Inventory():
         # Run a select command for make work fetchall method 
         table: str = ''
         try:
-            cursor.execute('SELECT * FROM inventory_items;') 
             # Format table as text string
-            for row in cursor.fetchall():
+            for row in cursor.execute('SELECT * FROM inventory_items;'):
                  # Run one time the fetchall method for add rows
                     table += (
                                 # Date
