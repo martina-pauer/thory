@@ -130,7 +130,7 @@ class Tables(Gtk.Window):
                             )
         else:
             # Override from the first to the last entry
-            self.row[self.changes] = widget.get_text()                        
+            self.row[self.changes] = widget.get_text()    
         # Count every change on each entry    
         self.changes += 1
         # When all the entry change knowing how much add all
