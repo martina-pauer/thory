@@ -39,19 +39,27 @@ app.set_columns(
             'Units', 'Price'
         ]
 )
-# Define the text to show
-stock
-app.last_outputs(
-    # Show the price of all the stock,
-    stock.calc_price()
-)
 # Customize with own style
 app.get_style('gtk_theme.css')
 # Show the interface when get all
 app.run()
 # Convert price of products
 for product in stock.items:
-    if product.price[0] == 'ARS':
+    app.last_outputs(
+        # Show the price of all the stock,
+        stock.calc_price()
+    )
+    if product.price[0] != 'ARS':
         # The convert from lower to greater is 1 divided price for buy one great
-        product.convert((1533.00 ** (-1)), app.option)
-print(app.table)
+        product.convert((1542.41 ** (-1)), app.option)
+    # Define object from the row    
+    prod = inventhory.Good      (
+                                    app.row[0]
+                                )
+    prod.count = app.row[1]
+    prod.price = (product.price[0], app.row[1])
+    # Add to stock and storage in database
+    stock.add(prod)
+    app.table = stock.save()
+    # Refresh interface     
+    app.show_all()

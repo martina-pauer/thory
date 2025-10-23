@@ -130,7 +130,7 @@ class Tables(Gtk.Window):
                             )
         else:
             # Override from the first to the last entry
-            self.row[self.changes] = widget.get_text()                    
+            self.row[self.changes] = widget.get_text()                        
         # Count every change on each entry    
         self.changes += 1
         # When all the entry change knowing how much add all
@@ -139,7 +139,7 @@ class Tables(Gtk.Window):
             text = ''
             # Get all the input and format from the row list
             for data in self.row:
-                text += '\t{data}'
+                text += f'\t{data}'
             # Update table with new data
             self.table += f'\n{text}\n'
             del text            
@@ -150,7 +150,7 @@ class Tables(Gtk.Window):
             # Restart for count again after complete info
             self.changes = 0 
             # Update view for show the result
-            self.show_all()   
+            self.show_all()
         
     def on_currency_changed(self, menu: Gtk.ComboBoxText):
         '''
