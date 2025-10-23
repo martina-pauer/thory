@@ -17,12 +17,20 @@ class Tables(Gtk.Window):
             Tables.ins_container, block for inputs
 
             Tables.outs_container, block for outputs
+
+            Tables.row, list with the last input has a length of Tables.entries as max
+
+            Tables.entries, number of input for the interface
+
+            Tables.changes, number of how much the input text has chaanged
         '''
         # Set title, width in pixels and height in pixels
         super().__init__(title = 'Stock')
         self.set_size_request(window_size[0], window_size[1])
         # Object properties
         self.table: str = tab
+
+        self.row: list[str] = []
 
         self.option: str = ''
 
@@ -115,21 +123,32 @@ class Tables(Gtk.Window):
             Event for input change of
             all the inputs
         '''
+        # Get one row when don't pass the entries
+        if self.row.__len__() < self.entries:
+            self.row.append (
+                                widget.get_text()
+                            )
+        else:
+            # Override from the first to the last entry
+            self.row[self.changes] = widget.get_text()                    
         # Count every change on each entry    
         self.changes += 1
         # When all the entry change knowing how much add all
         if self.changes == self.entries:
             # Make the table output
-            text = widget.get_text()
+            text = ''
+            # Get all the input and format from the row list
+            for data in self.row:
+                text += '\t{data}'
             # Update table with new data
-            self.table += f'\t{text}\t'
+            self.table += f'\n{text}\n'
             del text            
             self.outs_container.pack_start (
                                                 Gtk.Label(label = self.table), True,
                                                 True, 0
             )
             # Restart for count again after complete info
-            self.changes = 1 
+            self.changes = 0 
             # Update view for show the result
             self.show_all()   
         
