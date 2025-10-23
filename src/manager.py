@@ -43,6 +43,8 @@ class Tables(Gtk.Window):
             # Create Text input for data
             input_object = Gtk.Entry()
             input_object.set_placeholder_text(input_data)
+            # Count one entry more
+            self.entries += 1
             # Update interface everytime the input changes
             input_object.connect('changed', self.update_table)
             # Add object to inputs section: Use recommended method for more widgest
@@ -51,8 +53,6 @@ class Tables(Gtk.Window):
                                             True, 0
             )
             del input_object
-            # Count one entry more
-            self.entries += 1
             
     def last_outputs(self, outputs: list[str]):
         '''
@@ -115,6 +115,8 @@ class Tables(Gtk.Window):
             Event for input change of
             all the inputs
         '''
+        # Count every change on each entry    
+        self.changes += 1
         # When all the entry change knowing how much add all
         if self.changes == self.entries:
             # Make the table output
@@ -127,9 +129,9 @@ class Tables(Gtk.Window):
                                                 True, 0
             )
             # Restart for count again after complete info
-            self.changes = 1
-        # Count every change on each entry    
-        self.changes += 1    
+            self.changes = 1 
+            # Update view for show the result
+            self.show_all()   
         
     def on_currency_changed(self, menu: Gtk.ComboBoxText):
         '''
