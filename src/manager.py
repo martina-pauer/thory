@@ -42,6 +42,7 @@ class Tables(Gtk.Window):
         
         self.ins_container: Gtk.VBox = Gtk.VBox()
 
+        self.external: None = print()
         self.outs_container: Gtk.VBox = Gtk.VBox()
         
     def set_inputs(self, inputs: list[str]):
