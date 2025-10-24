@@ -101,7 +101,7 @@ class Tables(Gtk.Window):
          # Combo button with menu of options          
          button = Gtk.ComboBoxText()
          button.set_entry_text_column(0)
-         button.connect('changed', self.on_currency_changed) 
+         button.connect('changed', self.on_option_changed) 
          # Add identifier category and options to select
          for option in parameters:
             button.append_text(option)
@@ -111,6 +111,8 @@ class Tables(Gtk.Window):
                                         True, 0
          )
          del button
+         # Make one Enrty more
+         self.entries += 1
          getter = Gtk.Entry()
          getter.set_placeholder_text(property_name)
          container = Gtk.HBox()
@@ -159,14 +161,14 @@ class Tables(Gtk.Window):
             # Update view for show the result
             self.show_all()
         
-    def on_currency_changed(self, menu: Gtk.ComboBoxText):
+    def on_option_changed(self, menu: Gtk.ComboBoxText):
         '''
             Get the selected option
             from List Button (ComboBoxText)
         '''
         self.option = menu.get_active_text()
         # Select from the last Entry inside other container the text to add
-        self.row.append(self.ins_container[self.ins_container.__len__() - 1][0].get_text())
+        self.row.append(self.ins_container.get_children()[self.ins_container.__len__() - 2].get_children()[0].get_text())
         
     def get_style(self, css_filename: str):
         '''
