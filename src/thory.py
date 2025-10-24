@@ -42,7 +42,7 @@ app.set_columns(
 )
 # Customize with own style
 app.get_style('gtk_theme.css')
+# External func for update
+app.external = storage
 # Show the interface when get all
 app.run()
-# External func for update
-app.external = storage()

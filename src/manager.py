@@ -165,6 +165,8 @@ class Tables(Gtk.Window):
             from List Button (ComboBoxText)
         '''
         self.option = menu.get_active_text()
+        # Select from the last Entry inside other container the text to add
+        self.row.append(self.ins_container[self.ins_container.__len__() - 1][0].get_text())
         
     def get_style(self, css_filename: str):
         '''
