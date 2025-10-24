@@ -131,7 +131,7 @@ class Tables(Gtk.Window):
             all the inputs
         '''
         # Get one row when don't pass the entries
-        if self.row.__len__() < self.entries:
+        if self.row.__len__() <= self.entries:
             self.row.append (
                                 widget.get_text()
                             )
@@ -156,8 +156,6 @@ class Tables(Gtk.Window):
             )
             # Restart for count again after complete info
             self.changes = 0
-            # External action to perform when the table is updated
-            self.external() 
             # Update view for show the result
             self.show_all()
         
@@ -169,6 +167,8 @@ class Tables(Gtk.Window):
         self.option = menu.get_active_text()
         # Select from the last Entry inside other container the text to add
         self.row.append(self.ins_container.get_children()[self.ins_container.__len__() - 2].get_children()[0].get_text())
+        # External action to perform when the table is updated
+        self.external() 
         
     def get_style(self, css_filename: str):
         '''
