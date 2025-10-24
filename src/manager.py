@@ -57,7 +57,7 @@ class Tables(Gtk.Window):
             # Count one entry more
             self.entries += 1
             # Give Dafault value to Row for protect from exception
-            self.row.append('') 
+            self.row.append('0') 
             # Update interface everytime the input changes
             input_object.connect('changed', self.update_table)
             # Add object to inputs section: Use recommended method for more widgest
