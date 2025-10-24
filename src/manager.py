@@ -23,6 +23,8 @@ class Tables(Gtk.Window):
             Tables.entries, number of input for the interface
 
             Tables.changes, number of how much the input text has chaanged
+
+            Table.external, external func when get all the inputs
         '''
         # Set title, width in pixels and height in pixels
         super().__init__(title = 'Stock')
@@ -53,6 +55,8 @@ class Tables(Gtk.Window):
             input_object.set_placeholder_text(input_data)
             # Count one entry more
             self.entries += 1
+            # Give Dafault value to Row for protect from exception
+            self.row.append('') 
             # Update interface everytime the input changes
             input_object.connect('changed', self.update_table)
             # Add object to inputs section: Use recommended method for more widgest
@@ -148,7 +152,9 @@ class Tables(Gtk.Window):
                                                 True, 0
             )
             # Restart for count again after complete info
-            self.changes = 0 
+            self.changes = 0
+            # External action to perform when the table is updated
+            self.external() 
             # Update view for show the result
             self.show_all()
         
