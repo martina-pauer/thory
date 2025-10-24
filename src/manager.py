@@ -131,7 +131,7 @@ class Tables(Gtk.Window):
             all the inputs
         '''
         # Get one row when don't pass the entries
-        if self.row.__len__() <= self.entries:
+        if self.row.__len__() < self.entries:
             self.row.append (
                                 widget.get_text()
                             )

@@ -8,10 +8,10 @@ def storage():
                 inputs
         '''
         # Define object from the row
-        if app.row.__len__() == app.entries and not app.row.__contains__('0') and not app.row.__contains__(''):
+        if app.row.__len__() >= app.entries:
            # Only Storage When all the entries are complete    
-                product = inventhory.Good(app.row[0])
-                product.price = ('ARS', float(app.row[2]))
+                product = inventhory.Good(app.row[2])
+                product.price = ('ARS', float(app.row[3]))
                 product.count = app.row[1]
                 # Storage in database
                 stock = inventhory.Inventory()
