@@ -130,16 +130,25 @@ class Tables(Gtk.Window):
             Event for input change of
             all the inputs
         '''
+        # Save the value from entry for fast up & not lost time asking the same
+        entry_text: str = widget.get_text()
         # Get one row when don't pass the entries
         if self.row.__len__() < self.entries:
             self.row.append (
-                                widget.get_text()
+                                entry_text
                             )
         else:
             # Override from the first to the last entry
-            self.row[self.changes] = widget.get_text()    
+            self.row[self.changes] = entry_text    
         # Count every change on each entry    
         self.changes += 1
+        # But not count the extra changes, count only how much entries changes
+        self.changes -= (
+                            entry_text.__len__() 
+                            -1
+                        )
+        # Free the unned data for get more RAM available
+        del entry_text
         # When all the entry change knowing how much add all
         if self.changes == self.entries:
             # Make the table output
