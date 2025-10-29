@@ -143,10 +143,10 @@ class Tables(Gtk.Window):
         # Count every change on each entry    
         self.changes += 1
         # But not count the extra changes, count only how much entries changes
-        self.changes -= (
-                            entry_text.__len__() 
-                            -1
-                        )
+        if self.changes >= entry_text.__len__():
+            self.changes -= (
+                                entry_text.__len__() - 1
+                            )
         # Free the unned data for get more RAM available
         del entry_text
         # When all the entry change knowing how much add all
