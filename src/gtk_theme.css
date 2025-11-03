@@ -1,6 +1,6 @@
-*
+*, button
 {
-    background-color: #e71f76;
+    background-color: #1d4b80;
     color: #fcf2f2;
 }
 
@@ -15,4 +15,15 @@ entry
 entry:hover
 {
     background-color: #add8e6;
+}
+
+button:hover
+{
+    border-radius: 5%;
+    border-color: #a8ffff;
+}
+
+label
+{
+    background: #777777;
 }
