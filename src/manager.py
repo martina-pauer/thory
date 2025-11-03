@@ -66,7 +66,17 @@ class Tables(Gtk.Window):
                                             True, 0
             )
             del input_object
+            # Button for prevent table view mistakes
+            send = Gtk.Button(label = 'Send')
             
+            send.connect('clicked', self.send_data)
+            
+            self.ins_container.pack_start(
+                                            send, True,
+                                            True, 0
+            )
+            del send
+              
     def last_outputs(self, outputs: list[str]):
         '''
             Give text to display
@@ -155,7 +165,8 @@ class Tables(Gtk.Window):
             text = ''
             # Get all the input and format from the row list
             for data in self.row:
-                text += f'\t{data}'
+                # Add multiple dash as seperator on each row as chars as the columnn value
+                text += f'{data.__len__() * "-"}\n\t{data}'
             # Update table with new data
             self.table += f'\n{text}\n'
             del text            
@@ -165,6 +176,14 @@ class Tables(Gtk.Window):
             )
             # Restart for count again after complete info
             self.changes = 0
+            
+    def send_data(self, sender: Gtk.Button):
+            '''
+                Event when the data are loaded
+                all and the button is pressed
+                for don't show weird text by
+                missed data not written yet.
+            '''        
             # Update view for show the result
             self.show_all()
         
