@@ -166,7 +166,7 @@ class Tables(Gtk.Window):
             # Get all the input and format from the row list
             for data in self.row:
                 # Add multiple dash as seperator on each row as chars as the columnn value
-                text += f'{data.__len__() * "-"}\n\t{data}'
+                text += f'\n{"-" * (text.__len__() + data.__len__() + 4)}\n\t{data}'
             # Update table with new data
             self.table += f'\n{text}\n'
             del text            
