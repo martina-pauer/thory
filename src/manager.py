@@ -66,16 +66,16 @@ class Tables(Gtk.Window):
                                             True, 0
             )
             del input_object
-            # Button for prevent table view mistakes
-            send = Gtk.Button(label = 'Send')
+        # Button for prevent table view mistakes
+        send = Gtk.Button(label = 'Send')
             
-            send.connect('clicked', self.send_data)
-            
-            self.ins_container.pack_start(
-                                            send, True,
-                                            True, 0
-            )
-            del send
+        send.connect('clicked', self.send_data)
+        # Add out from the loop for don't put many buttons    
+        self.ins_container.pack_start(
+                                        send, True,
+                                        True, 0
+        )
+        del send
               
     def last_outputs(self, outputs: list[str]):
         '''
