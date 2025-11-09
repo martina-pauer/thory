@@ -191,7 +191,7 @@ class Tables(Gtk.Window):
                 for don't show weird text by
                 missed data not written yet.
             '''        
-            # Update view for show the result
+            # Update view for show the result and save
             self.external()
         
     def on_option_changed(self, menu: Gtk.ComboBoxText):
@@ -202,8 +202,6 @@ class Tables(Gtk.Window):
         self.option = menu.get_active_text()
         # Select from the last Entry inside other container the text to add
         self.row.append(self.ins_container.get_children()[self.ins_container.__len__() - 2].get_children()[0].get_text())
-        # External action to perform when the table is updated
-        self.external() 
         
     def get_style(self, css_filename: str):
         '''
