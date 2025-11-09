@@ -20,6 +20,8 @@ class Tables(Gtk.Window):
 
             Tables.row, list with the last input has a length of Tables.entries as max
 
+            Tables.row_length, count of characters of first row
+
             Tables.entries, number of input for the interface
 
             Tables.changes, number of how much the input text has chaanged
@@ -39,11 +41,14 @@ class Tables(Gtk.Window):
         self.changes: int = 0
         
         self.entries: int = 0
+
+        self.row_length: int = 0
         
         self.ins_container: Gtk.VBox = Gtk.VBox()
+        
+        self.outs_container: Gtk.VBox = Gtk.VBox()
 
         self.external: None = print()
-        self.outs_container: Gtk.VBox = Gtk.VBox()
         
     def set_inputs(self, inputs: list[str]):
         '''
@@ -95,6 +100,8 @@ class Tables(Gtk.Window):
             text: str = ''
             for name in names:
                  text += f'|\t{name}\t '
+            # Count how much characters has the first and bigest row
+            self.row_length = text.__len__()     
             # Add columns names and later table content     
             self.outs_container.pack_start(
                                         Gtk.Label(label = f'{text}|\t\n{self.table}'), True,
@@ -165,8 +172,8 @@ class Tables(Gtk.Window):
             text = ''
             # Get all the input and format from the row list
             for data in self.row:
-                # Add multiple dash as seperator on each row as chars as the columnn value
-                text += f'\n{"-" * (text.__len__() + data.__len__() + 4)}\n\t{data}'
+                # Add multiple dash as seperator on each row as chars as the first row
+                text += f'\n{"-" * self.row_length}\n\t{data}'
             # Update table with new data
             self.table += f'\n{text}\n'
             del text            
@@ -185,7 +192,7 @@ class Tables(Gtk.Window):
                 missed data not written yet.
             '''        
             # Update view for show the result
-            self.show_all()
+            self.external()
         
     def on_option_changed(self, menu: Gtk.ComboBoxText):
         '''
