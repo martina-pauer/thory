@@ -1,14 +1,14 @@
 *, button
 {
-    background-color: #1d4b80;
-    color: #fcf2f2;
+    background-color: #1d9d90;
+    color: #3a3a3b;
 }
 
 entry
 {
     border-radius: 2%;
-    background-color: #fcf2f2;
-    color: #4c300d;
+    background-color: #e2a93e;
+    color: #1a1358;
     border-color: #fcf2f2;
 }
 
@@ -17,9 +17,14 @@ entry:hover
     background-color: #add8e6;
 }
 
+button
+{
+    border-radius: 20%;
+}
+
 button:hover
 {
-    border-radius: 5%;
+    border-radius: 10%;
     border-color: #a8ffff;
 }
 
