@@ -8,8 +8,8 @@ def storage():
                 inputs
         '''
         # Define object from the row
-        if app.row.__len__() >= app.entries:
-           # Only Storage When all the entries are complete    
+        if app.entries <= (app.row.__len__() + app.ins_container.get_children()[app.ins_container.__len__() - 1].get_children()[0]):
+           # Only Storage When all the entries are complete witout count the name characters as changes   
                 product = inventhory.Good(app.row[2])
                 product.price = ('ARS', float(app.row[3]))
                 product.count = app.row[1]

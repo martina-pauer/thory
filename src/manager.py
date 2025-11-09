@@ -192,7 +192,6 @@ class Tables(Gtk.Window):
                 missed data not written yet.
             '''        
             # Update view for show the result and save
-            self.on_option_changed(self, self.ins_container.get_children()[self.ins_container.__len__() - 2].get_children[2])
             self.external()
         
     def on_option_changed(self, menu: Gtk.ComboBoxText):
