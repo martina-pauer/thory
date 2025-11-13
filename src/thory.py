@@ -16,7 +16,19 @@ def storage():
                           ):
            # Only Storage When all the entries are complete witout count the name characters as changes   
                 product = inventhory.Good(app.row[2])
+                # When the price is ARSED (pesificado) leave of that way
                 product.price = ('ARS', float(app.row[3]))
+                # Only make convertion when the selected currency is diff to ARS
+                if app.option == 'USD':
+                        # Convert from Law Dollar to ARS
+                        product.convert(1430, 'ARS')
+                elif app.option == '€':
+                        # Only need change the saved amount for don't search the same data
+                        product.convert(1757.80, 'ARS')
+                elif app.option == '£':
+                        # Pounds Value  
+                        product.convert(1964.82, 'ARS')         
+                # When select one of defined curreuncies different to ARS make converrtion                     
                 product.count = app.row[1]
                 # Storage in database
                 stock = inventhory.Inventory()
@@ -34,7 +46,7 @@ app.set_inputs(
 )
 
 app.parametric_input(
-        ['ARS', 'USD', '€', '¥'],
+        ['ARS', 'USD', '€', '£'],
         'Price'    
 )
 
