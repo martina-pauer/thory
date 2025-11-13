@@ -38,12 +38,12 @@ class Good():
             calc the total price for
             this good only (unit times the price)
         '''
-        return  (
-                # Mantain the same currency for be more predictible
+        return  [
+                    # Mantain the same currency for be more predictible
                     self.price[0], 
-                # Price unit times only with 2 decimals    
+                    # Price unit times only with 2 decimals    
                     round(self.count * self.price[1], 2)
-                )
+                ]
 
     def convert(self, equiv: float, currency: str):  
         '''
