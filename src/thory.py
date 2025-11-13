@@ -17,7 +17,7 @@ def storage():
            # Only Storage When all the entries are complete witout count the name characters as changes   
                 product = inventhory.Good(app.row[2])
                 # When the price is ARSED (pesificado) leave of that way
-                product.price = ('ARS', float(app.row[3]))
+                product.price = ['ARS', float(app.row[3])]
                 # Only make convertion when the selected currency is diff to ARS
                 if app.option == 'USD':
                         # Convert from Law Dollar to ARS
@@ -60,6 +60,6 @@ app.set_columns(
 # Customize with own style
 app.get_style('gtk_theme.css')
 # External func for update
-app.external = storage
+app.external = storage()
 # Show the interface when get all
 app.run()
