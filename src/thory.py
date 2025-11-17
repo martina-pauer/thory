@@ -2,6 +2,9 @@
 from manager import Tables
 import inventhory
 
+# External to function object for reinput many times
+stock = inventhory.Inventory()
+
 def storage():
         '''
                 Storage in database the
@@ -31,12 +34,18 @@ def storage():
                 # When select one of defined curreuncies different to ARS make converrtion                     
                 product.count = app.row[1]
                 # Storage in database
-                stock = inventhory.Inventory()
                 stock.add(product)
                 app.table = stock.save()
+                # Show total price in external object with stock
+                app.last_outputs(
+                        [
+                                # Show the total price on inventory before add table
+                                f'Total Value: {stock.calc_price()[1]} {stock.calc_price()[0]}'
+                        ]
+                )
                 app.show_all()
 # Main code    
-app = Tables('', (300, 300))
+app = Tables('', (300, 500))
 # Define the data getting
 app.set_inputs(
         [

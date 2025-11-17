@@ -193,7 +193,9 @@ class Tables(Gtk.Window):
             '''        
             # Update view for show the result and save
             self.external()
-        
+            # Restart for load more products
+            self.row: list[str] = []
+            self.changes: int = 0
     def on_option_changed(self, menu: Gtk.ComboBoxText):
         '''
             Get the selected option
