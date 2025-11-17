@@ -18,7 +18,7 @@ def storage():
                                         + 2
                           ):
            # Only Storage When all the entries are complete witout count the name characters as changes   
-                product = inventhory.Good(app.row[2])
+                product = inventhory.Good(app.row[0])
                 # When the price is ARSED (pesificado) leave of that way
                 product.price = ['ARS', float(app.row[3])]
                 # Only make convertion when the selected currency is diff to ARS
@@ -32,7 +32,7 @@ def storage():
                         # Pounds Value  
                         product.convert(1944.21, 'ARS')         
                 # When select one of defined curreuncies different to ARS make converrtion                     
-                product.count = app.row[1]
+                product.count = int(app.row[1])
                 # Storage in database
                 stock.add(product)
                 app.table = stock.save()
