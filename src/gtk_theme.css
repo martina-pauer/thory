@@ -1,20 +1,21 @@
 *, button
 {
-    background-color: #1d9d90;
-    color: #d4d4d6;
+    background-color: #9c9695;
+    color: #fff2f2;
 }
 
 entry
 {
     border-radius: 2%;
-    background-color: #e2a93e;
-    color: #1a1358;
-    border-color: #fcf2f2;
+    background-color: #fefef5;
+    color: #6b6088;
+    border-color: #000000;
 }
 
 entry:hover
 {
-    background-color: #add8e6;
+    background-color: #6b6088;
+    color: #fefef5;
 }
 
 button
@@ -25,10 +26,11 @@ button
 button:hover
 {
     border-radius: 10%;
-    border-color: #a8ffff;
+    border-color: #6b6088;
 }
 
 label
 {
-    background: #777777;
+    background: #fff2f2;
+    color: #6b6088;
 }
