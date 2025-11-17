@@ -15,7 +15,7 @@ def storage():
                                 # Discount changes from name input
                                         app.row.__len__() 
                                         + app.ins_container.get_children()[app.ins_container.__len__() - 1].get_children()[0].get_text().__len__() 
-                                        + 1
+                                        + 2
                           ):
            # Only Storage When all the entries are complete witout count the name characters as changes   
                 product = inventhory.Good(app.row[2])
@@ -24,13 +24,13 @@ def storage():
                 # Only make convertion when the selected currency is diff to ARS
                 if app.option == 'USD':
                         # Convert from Law Dollar to ARS
-                        product.convert(1430, 'ARS')
+                        product.convert(1415.00, 'ARS')
                 elif app.option == '€':
                         # Only need change the saved amount for don't search the same data
-                        product.convert(1757.80, 'ARS')
+                        product.convert(1739.43, 'ARS')
                 elif app.option == '£':
                         # Pounds Value  
-                        product.convert(1964.82, 'ARS')         
+                        product.convert(1944.21, 'ARS')         
                 # When select one of defined curreuncies different to ARS make converrtion                     
                 product.count = app.row[1]
                 # Storage in database
