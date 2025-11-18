@@ -196,6 +196,17 @@ class Tables(Gtk.Window):
             # Restart for load more products
             self.row: list[str] = []
             self.changes: int = 0
+            # Clean all the inputs for load more data
+            for entries in self.ins_container.get_children():
+                try:
+                    # Only apply to text inputs not buttons and menus
+                    entries.set_text('')
+                except:
+                    try:
+                    # The Parametric input has a text input apart from the others   
+                        entries.get_children()[0].set_text('')  
+                    except:
+                        pass    
     def on_option_changed(self, menu: Gtk.ComboBoxText):
         '''
             Get the selected option
