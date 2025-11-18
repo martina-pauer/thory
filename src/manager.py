@@ -203,10 +203,12 @@ class Tables(Gtk.Window):
                     entries.set_text('')
                 except:
                     try:
-                    # The Parametric input has a text input apart from the others   
-                        entries.get_children()[0].set_text('')  
+                    # The Parametric input has a text input apart from the others  
+                        if type(entries) != type(Gtk.Button()): 
+                            entries.get_children()[0].set_text('')  
                     except:
-                        pass    
+                        pass
+
     def on_option_changed(self, menu: Gtk.ComboBoxText):
         '''
             Get the selected option
