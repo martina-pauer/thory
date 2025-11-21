@@ -133,6 +133,8 @@ class Tables(Gtk.Window):
          getter = Gtk.Entry()
          getter.set_placeholder_text(property_name)
          container = Gtk.HBox()
+         # Define input event for set the name of product and all the data well
+         getter.connect('changed', self.update_table) 
          container.add(getter)
          del getter
          # Use pack_start method for various widgets adding on containers
@@ -157,8 +159,8 @@ class Tables(Gtk.Window):
         else:
             # Override from the first to the last entry
             self.row[self.changes] = entry_text    
-        # Count every change on each entry    
-        self.changes += 1
+            # Count every change on each entry Only When Is Changing   
+            self.changes += 1
         # But not count the extra changes, count only how much entries changes
         if self.changes >= entry_text.__len__():
             self.changes -= (
@@ -173,9 +175,9 @@ class Tables(Gtk.Window):
             # Get all the input and format from the row list
             for data in self.row:
                 # Add multiple dash as seperator on each row as chars as the first row
-                text += f'\n{"-" * self.row_length}\n\t{data}'
+                text += f'|\t{data}\t'
             # Update table with new data
-            self.table += f'\n{text}\n'
+            self.table += f'\n{"-" * self.row_length}\n{text}|\n'
             del text            
             self.outs_container.pack_start (
                                                 Gtk.Label(label = self.table), True,
