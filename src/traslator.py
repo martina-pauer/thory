@@ -1,6 +1,6 @@
 class Traslator():
 
-    def __init__():
+    def __init__(self):
         '''
             Make automatic custom
             traslations for a software
@@ -20,9 +20,11 @@ class Traslator():
             Give traslation for a word
             only if are defined.
         '''
-        try:
-            for lang in self.lang_dicts.keys():
-                if word in lang.keys():
-                    return lang[word]
-             # When the word isn't stay in some dictionary
-             return word
+        import locale
+        # Use code of two characters of system language code
+        code = locale.getlocale()[0][0 : 2]
+
+        if code in self.lang_dicts.keys():
+            return self.lang_dicts[code][word]
+        else:
+            return word

@@ -6,15 +6,43 @@ from gi.repository import Gdk
 # Define Specific software traslations
 tra = traslator.Traslator()
 # Spanish
-tra.add_traslation(
-                    'es', 'Stock', 
-                    'Inventario'
-                   )
+tra.add_traslation  (
+                        'es', 'Stock', 
+                        'Inventario'
+                    )
+
+tra.add_traslation  (
+                        'es', 'Product Name',
+                        'producto'     
+                    )
+
+tra.add_traslation  (
+                        'es', 'Units In Stock',
+                        'Unidades En Inventario'
+                    )  
+
+tra.traslate    (
+                    'es', 'Send',
+                    'Enviar'
+                )
+
+tra.traslate    (
+                    'es', 'Price',
+                    'Precio'
+                ) 
+
+tra.traslate    (
+                    'es', 'Date', 
+                    'Fecha'
+                )
+
+tra.traslate    (
+                    'es', 'Units',
+                    'Unidades'
+                )   
 # French
-tra.add_traslation(
-                    'fr', 'Stock',                   
-                    ''
-                  ) 
+# Deutsch (German)
+# Italian 
 # Define reusable graphics
 class Tables(Gtk.Window):
     def __init__(self, tab: str, window_size: tuple[int, int]):
