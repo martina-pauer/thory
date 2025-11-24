@@ -41,7 +41,7 @@ tra.add_traslation    (
                     'Unidades'
                 )   
 
- tra.add_traslation   (
+tra.add_traslation   (
                     'es', 'Name',
                     'Nombre'
                 )                
@@ -81,7 +81,7 @@ tra.add_traslation    (
                     'Unités'
                 )   
 
- tra.add_traslation   (
+tra.add_traslation   (
                     'fr', 'Name',
                     'Nom'
                 )                
@@ -121,7 +121,7 @@ tra.add_traslation   (
                     'Einheiten'
                 ) 
 
- tra.add_traslation   (
+tra.add_traslation   (
                     'de', 'Name',
                     'Name'
                 )                
@@ -161,7 +161,7 @@ tra.add_traslation   (
                     'Unità'
                 ) 
 
- tra.add_traslation   (
+tra.add_traslation   (
                     'it', 'Name',
                     'Nome'
                 )                
