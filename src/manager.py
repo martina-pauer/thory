@@ -43,72 +43,72 @@ tra.traslate    (
 # French
 tra.add_traslation  (
                         'fr', 'Stock', 
-                        ''
+                        'Inventaire'
                     )
 
 tra.add_traslation  (
                         'fr', 'Product Name',
-                        ''     
+                        'Produit'     
                     )
 
 tra.add_traslation  (
                         'fr', 'Units In Stock',
-                        ''
+                        'Unités En Inventaire'
                     )  
 
 tra.traslate    (
                     'fr', 'Send',
-                    ''
+                    'Envoyer'
                 )
 
 tra.traslate    (
                     'fr', 'Price',
-                    ''
+                    'Prix'
                 ) 
 
 tra.traslate    (
                     'fr', 'Date', 
-                    ''
+                    'Date'
                 )
 
 tra.traslate    (
                     'fr', 'Units',
-                    ''
+                    'Unités'
                 )   
 # Deutsch (German)
 tra.add_traslation  (
                         'de', 'Stock', 
-                        ''
+                        'Inventar'
                     )
 
 tra.add_traslation  (
                         'de', 'Product Name',
-                        ''     
+                        'Produkt'     
                     )
 
 tra.add_traslation  (
                         'de', 'Units In Stock',
-                        ''
+                        'Einheiten Im Bestand'
                     )  
 
 tra.traslate    (
                     'de', 'Send',
-                    ''
+                    'Schicken'
                 )
 
 tra.traslate    (
                     'de', 'Price',
-                    ''
+                    'Preis'
                 ) 
 
 tra.traslate    (
                     'de', 'Date', 
-                    ''
+                    'Datum'
                 )
 
 tra.traslate    (
                     'de', 'Units',
-                    ''
+                    'Einheiten'
                 ) 
 # Italian
 tra.add_traslation  (
