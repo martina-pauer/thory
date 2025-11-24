@@ -40,6 +40,11 @@ tra.add_traslation    (
                     'es', 'Units',
                     'Unidades'
                 )   
+
+ tra.add_traslation   (
+                    'es', 'Name',
+                    'Nombre'
+                )                
 # French
 tra.add_traslation  (
                         'fr', 'Stock', 
@@ -75,6 +80,11 @@ tra.add_traslation    (
                     'fr', 'Units',
                     'Unités'
                 )   
+
+ tra.add_traslation   (
+                    'fr', 'Name',
+                    'Nom'
+                )                
 # Deutsch (German)
 tra.add_traslation  (
                         'de', 'Stock', 
@@ -110,6 +120,11 @@ tra.add_traslation   (
                     'de', 'Units',
                     'Einheiten'
                 ) 
+
+ tra.add_traslation   (
+                    'de', 'Name',
+                    'Name'
+                )                
 # Italian
 tra.add_traslation  (
                         'it', 'Stock', 
@@ -145,6 +160,11 @@ tra.add_traslation   (
                     'it', 'Units',
                     'Unità'
                 ) 
+
+ tra.add_traslation   (
+                    'it', 'Name',
+                    'Nome'
+                )                
 # Define reusable graphics
 class Tables(Gtk.Window):
     def __init__(self, tab: str, window_size: tuple[int, int]):
