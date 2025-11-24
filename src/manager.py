@@ -21,22 +21,22 @@ tra.add_traslation  (
                         'Unidades En Inventario'
                     )  
 
-tra.traslate    (
+tra.add_traslation    (
                     'es', 'Send',
                     'Enviar'
                 )
 
-tra.traslate    (
+tra.add_traslation    (
                     'es', 'Price',
                     'Precio'
                 ) 
 
-tra.traslate    (
+tra.add_traslation    (
                     'es', 'Date', 
                     'Fecha'
                 )
 
-tra.traslate    (
+tra.add_traslation    (
                     'es', 'Units',
                     'Unidades'
                 )   
@@ -56,22 +56,22 @@ tra.add_traslation  (
                         'Unités En Inventaire'
                     )  
 
-tra.traslate    (
+tra.add_traslation    (
                     'fr', 'Send',
                     'Envoyer'
                 )
 
-tra.traslate    (
+tra.add_traslation (
                     'fr', 'Price',
                     'Prix'
                 ) 
 
-tra.traslate    (
+tra.add_traslation    (
                     'fr', 'Date', 
                     'Date'
                 )
 
-tra.traslate    (
+tra.add_traslation    (
                     'fr', 'Units',
                     'Unités'
                 )   
@@ -91,22 +91,22 @@ tra.add_traslation  (
                         'Einheiten Im Bestand'
                     )  
 
-tra.traslate    (
+tra.add_traslation    (
                     'de', 'Send',
                     'Schicken'
                 )
 
-tra.traslate    (
+tra.add_traslation    (
                     'de', 'Price',
                     'Preis'
                 ) 
 
-tra.traslate    (
+tra.add_traslation    (
                     'de', 'Date', 
                     'Datum'
                 )
 
-tra.traslate    (
+tra.add_traslation   (
                     'de', 'Units',
                     'Einheiten'
                 ) 
@@ -126,22 +126,22 @@ tra.add_traslation  (
                         "Unità Nell' inventario"
                     )  
 
-tra.traslate    (
+tra.add_traslation    (
                     'it', 'Send',
                     'Inviare'
                 )
 
-tra.traslate    (
+tra.add_traslation    (
                     'it', 'Price',
                     'Prezzo'
                 ) 
 
-tra.traslate    (
-                    'it', 'Date', 
-                    'Data'
-                )
+tra.add_traslation    (
+                        'it', 'Date', 
+                        'Data'
+                    )
 
-tra.traslate    (
+tra.add_traslation   (
                     'it', 'Units',
                     'Unità'
                 ) 

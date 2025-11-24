@@ -13,7 +13,7 @@ class Traslator():
             and end word
         '''
         # Add traslation
-        self.langs_dicts.setdefault(code, {source_word : target_word})
+        self.lang_dicts.setdefault(code, {source_word : target_word})
 
     def traslate(self, word) -> str:
         '''
