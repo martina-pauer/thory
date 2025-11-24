@@ -24,10 +24,10 @@ def storage():
                 # Only make convertion when the selected currency is diff to ARS
                 if app.option == 'USD':
                         # Convert from Law Dollar to ARS
-                        product.convert(1415.00, 'ARS')
+                        product.convert(1440.00, 'ARS')
                 elif app.option == '€':
                         # Only need change the saved amount for don't search the same data
-                        product.convert(1739.43, 'ARS')
+                        product.convert(1770.00, 'ARS')
                 elif app.option == '£':
                         # Pounds Value  
                         product.convert(1944.21, 'ARS')         
