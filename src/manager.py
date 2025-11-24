@@ -41,8 +41,110 @@ tra.traslate    (
                     'Unidades'
                 )   
 # French
+tra.add_traslation  (
+                        'fr', 'Stock', 
+                        ''
+                    )
+
+tra.add_traslation  (
+                        'fr', 'Product Name',
+                        ''     
+                    )
+
+tra.add_traslation  (
+                        'fr', 'Units In Stock',
+                        ''
+                    )  
+
+tra.traslate    (
+                    'fr', 'Send',
+                    ''
+                )
+
+tra.traslate    (
+                    'fr', 'Price',
+                    ''
+                ) 
+
+tra.traslate    (
+                    'fr', 'Date', 
+                    ''
+                )
+
+tra.traslate    (
+                    'fr', 'Units',
+                    ''
+                )   
 # Deutsch (German)
-# Italian 
+tra.add_traslation  (
+                        'de', 'Stock', 
+                        ''
+                    )
+
+tra.add_traslation  (
+                        'de', 'Product Name',
+                        ''     
+                    )
+
+tra.add_traslation  (
+                        'de', 'Units In Stock',
+                        ''
+                    )  
+
+tra.traslate    (
+                    'de', 'Send',
+                    ''
+                )
+
+tra.traslate    (
+                    'de', 'Price',
+                    ''
+                ) 
+
+tra.traslate    (
+                    'de', 'Date', 
+                    ''
+                )
+
+tra.traslate    (
+                    'de', 'Units',
+                    ''
+                ) 
+# Italian
+tra.add_traslation  (
+                        'it', 'Stock', 
+                        'Inventario'
+                    )
+
+tra.add_traslation  (
+                        'it', 'Product Name',
+                        'prodotto'     
+                    )
+
+tra.add_traslation  (
+                        'it', 'Units In Stock',
+                        "Unità Nell' inventario"
+                    )  
+
+tra.traslate    (
+                    'it', 'Send',
+                    'Inviare'
+                )
+
+tra.traslate    (
+                    'it', 'Price',
+                    'Prezzo'
+                ) 
+
+tra.traslate    (
+                    'it', 'Date', 
+                    'Data'
+                )
+
+tra.traslate    (
+                    'it', 'Units',
+                    'Unità'
+                ) 
 # Define reusable graphics
 class Tables(Gtk.Window):
     def __init__(self, tab: str, window_size: tuple[int, int]):
