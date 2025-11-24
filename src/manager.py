@@ -1,8 +1,21 @@
+import traslator
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from gi.repository import Gdk
-
+# Define Specific software traslations
+tra = traslator.Traslator()
+# Spanish
+tra.add_traslation(
+                    'es', 'Stock', 
+                    'Inventario'
+                   )
+# French
+tra.add_traslation(
+                    'fr', 'Stock',                   
+                    ''
+                  ) 
+# Define reusable graphics
 class Tables(Gtk.Window):
     def __init__(self, tab: str, window_size: tuple[int, int]):
         '''
@@ -58,7 +71,7 @@ class Tables(Gtk.Window):
         for input_data in inputs:
             # Create Text input for data
             input_object = Gtk.Entry()
-            input_object.set_placeholder_text(input_data)
+            input_object.set_placeholder_text(tra.traslate(input_data))
             # Count one entry more
             self.entries += 1
             # Give Dafault value to Row for protect from exception
@@ -72,7 +85,7 @@ class Tables(Gtk.Window):
             )
             del input_object
         # Button for prevent table view mistakes
-        send = Gtk.Button(label = 'Send')
+        send = Gtk.Button(label = tra.traslate('Send'))
             
         send.connect('clicked', self.send_data)
         # Add out from the loop for don't put many buttons    
@@ -89,7 +102,7 @@ class Tables(Gtk.Window):
         '''
         for output in outputs:
             self.outs_container.pack_start(
-                Gtk.Label(output), True,
+                Gtk.Label(tra.traslate(output)), True,
                 True, 0
             )
 
@@ -99,7 +112,7 @@ class Tables(Gtk.Window):
             '''
             text: str = ''
             for name in names:
-                 text += f'|\t{name}\t '
+                 text += f'|\t{tra.traslate(name)}\t '
             # Count how much characters has the first and bigest row
             self.row_length = text.__len__()     
             # Add columns names and later table content     
@@ -131,7 +144,7 @@ class Tables(Gtk.Window):
          # Make one Enrty more
          self.entries += 1
          getter = Gtk.Entry()
-         getter.set_placeholder_text(property_name)
+         getter.set_placeholder_text(tra.traslate(property_name))
          container = Gtk.HBox()
          # Define input event for set the name of product and all the data well
          getter.connect('changed', self.update_table) 
