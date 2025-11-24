@@ -1,36 +1,32 @@
 *, button
 {
-    background-color: #9c9695;
-    color: #fff2f2;
+    background: #ffffff;
+    color: #0029aa;
+    border-radius: 1.6em;
+    font-size: 1.1em;
+    padding: 0.3em;
 }
 
 entry
 {
-    border-radius: 2%;
-    background-color: #fefef5;
-    color: #6b6088;
-    border-color: #000000;
+    background: #75aadb;
+    color: #843511;
 }
 
-entry:hover
+combobox *.combo
 {
-    background-color: #6b6088;
-    color: #fefef5;
+    border: 1px solid #823210;
+    background: #03d3fc;
 }
 
-button
+entry:focus, button:hover, button:hover > *
 {
-    border-radius: 20%;
-}
-
-button:hover
-{
-    border-radius: 10%;
-    border-color: #6b6088;
+    background: #823210;
+    color: #03d3fc;
 }
 
 label
 {
-    background: #fff2f2;
-    color: #6b6088;
+    background: #03d3fc;
+    color: #823210;
 }
