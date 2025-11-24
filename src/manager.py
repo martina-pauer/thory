@@ -192,7 +192,7 @@ class Tables(Gtk.Window):
             Table.external, external func when get all the inputs
         '''
         # Set title, width in pixels and height in pixels
-        super().__init__(title = 'Stock')
+        super().__init__(title = tra.traslate('Stock'))
         self.set_size_request(window_size[0], window_size[1])
         # Object properties
         self.table: str = tab
