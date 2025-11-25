@@ -13,7 +13,7 @@ tra.add_traslation  (
 
 tra.add_traslation  (
                         'es', 'Product Name',
-                        'producto'     
+                        'Producto'     
                     )
 
 tra.add_traslation  (
@@ -133,7 +133,7 @@ tra.add_traslation  (
 
 tra.add_traslation  (
                         'it', 'Product Name',
-                        'prodotto'     
+                        'Prodotto'     
                     )
 
 tra.add_traslation  (
@@ -252,7 +252,7 @@ class Tables(Gtk.Window):
         '''
         for output in outputs:
             self.outs_container.pack_start(
-                Gtk.Label(tra.traslate(output)), True,
+                Gtk.Label(output), True,
                 True, 0
             )
 
@@ -340,7 +340,7 @@ class Tables(Gtk.Window):
                 # Add multiple dash as seperator on each row as chars as the first row
                 text += f'|\t{data}\t'
             # Update table with new data
-            self.table += f'\n{"-" * self.row_length}\n{text}|\n'
+            self.table += f'\n{"-" * (self.row_length + text.__len__())}\n{text}|\n'
             del text            
             self.outs_container.pack_start (
                                                 Gtk.Label(label = self.table), True,
