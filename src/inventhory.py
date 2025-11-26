@@ -125,11 +125,11 @@ class Inventory():
         consult = open('info.sqlite', 'a')
         # Do table for this inventory in particular
         # Columns in table: moment, good_name, available_units, price, currency
-        consult.write('CREATE TABLE inventory_items (moment timestamp, good_name varchar(255), available_units int, price FLOAT(8, 2), currency varchar(3));\n')
+        consult.write('CREATE TABLE inventory_items (moment timestamp, good_name varchar(255), available_units int, price FLOAT(8, 2), currency varchar(3), total_ars_price FLOAT(8, 2);\n')
         # Insert values from this inventory        
         for item in self.items:
                 item.fix_types()
-                consult.write(f"INSERT INTO inventory_items(moment, good_name, available_units, price, currency) VALUES (CURRENT_TIMESTAMP, '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}');\n")
+                consult.write(f"INSERT INTO inventory_items(moment, good_name, available_units, price, currency, total_ars_price) VALUES (CURRENT_TIMESTAMP, '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}', {self.calc_price()[1]});\n")
         consult.close()
         del consult
         # Load from the file and run in sqlite SQL manager
@@ -149,7 +149,8 @@ class Inventory():
                 good_name, 
                 available_units,
                 price,
-                currency
+                currency,
+                total_ars_price
 
             Return the text with the data as table.    
         '''
