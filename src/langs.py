@@ -9,7 +9,7 @@ for word in [
                 ('Name', 'Nombre'), ('Moment', 'Momento'), 
                 ('Good_Name', 'Producto'),
                 ('Available_Units', 'Unidades'),
-                ('Currency', 'Divisa'), ('inventory_itmes', 'inventario')
+                ('Currency', 'Divisa'), ('inventory_items', 'inventario'),
                 ('Total_ARS_Price', 'Precio_Total_Pesos_Argentinos')       
             ]:
     traslations.add_traslation('es', word[0], word[1])             
