@@ -6,7 +6,11 @@ for word in [
                 ('Stock', 'Inventario'), ('Product Name', 'Producto'), 
                 ('Units In Stock', 'Unidades En Inventario'), ('Send', 'Enviar'), 
                 ('Price', 'Precio'), ('Date', 'Fecha'), ('Units', 'Unidades'),   
-                ('Name', 'Nombre'), ('Moment', 'Momento'), ('Total_ARS_Price', 'Precio_Total_Pesos_Argentinos')       
+                ('Name', 'Nombre'), ('Moment', 'Momento'), 
+                ('Good_Name', 'Producto'),
+                ('Available_Units', 'Unidades'),
+                ('Currency', 'Divisa'),
+                ('Total_ARS_Price', 'Precio_Total_Pesos_Argentinos')       
             ]:
     traslations.add_traslation('es', word[0], word[1])             
 # French
@@ -24,7 +28,7 @@ for word in [
                 ('Price','Preis'), ('Date', 'Datum'), ('Units', 'Einheiten'), 
                 ('Name', 'Name')
             ]:
-    traslations.add_traslation(word[0], word[1])                    
+    traslations.add_traslation('de', word[0], word[1])                    
 # Italian
 for word in [
                 ('Stock', 'Inventario'), ('Product Name', 'Prodotto'),

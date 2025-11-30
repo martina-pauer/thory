@@ -133,7 +133,7 @@ class Inventory():
         # Insert values from this inventory        
         for item in self.items:
                 item.fix_types()
-                consult.write(f"INSERT INTO inventory_items({tra.traslate("Moment")}, {tra.traslate("Good_Name")}, {tra.traslate("Available_Units")}, {tra.traslate("Price")}, {tra.traslate("Currency")}, {tra.traslate("Total_ARS_Price")} VALUES (CURRENT_TIMESTAMP, '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}', {self.calc_price()[1]});\n")
+                consult.write(f"INSERT INTO inventory_items({tra.traslate('Moment')}, {tra.traslate('Good_Name')}, {tra.traslate('Available_Units')}, {tra.traslate('Price')}, {tra.traslate('Currency')}, {tra.traslate('Total_ARS_Price')} VALUES (CURRENT_TIMESTAMP, '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}', {self.calc_price()[1]});\n")
         consult.close()
         del consult
         # Load from the file and run in sqlite SQL manager
