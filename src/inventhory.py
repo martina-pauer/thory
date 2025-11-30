@@ -129,11 +129,11 @@ class Inventory():
         consult = open('info.sqlite', 'a')
         # Do table for this inventory in particular
         # Columns in table: moment, good_name, available_units, price, currency
-        consult.write(f'CREATE TABLE inventory_items ({tra.traslate("Moment")} timestamp, {tra.traslate("Good_Name")} varchar(255), {tra.traslate("Available_Units")} int, {tra.traslate("Price")} FLOAT(8, 2), {tra.traslate("Currency")} varchar(3), {tra.traslate("Total_ARS_Price")} FLOAT(8, 2);\n')
+        consult.write(f'CREATE TABLE {tra.traslate("inventory_items")} ({tra.traslate("Moment")} timestamp, {tra.traslate("Good_Name")} varchar(255), {tra.traslate("Available_Units")} int, {tra.traslate("Price")} FLOAT(8, 2), {tra.traslate("Currency")} varchar(3), {tra.traslate("Total_ARS_Price")} FLOAT(8, 2));\n')
         # Insert values from this inventory        
         for item in self.items:
                 item.fix_types()
-                consult.write(f"INSERT INTO inventory_items({tra.traslate('Moment')}, {tra.traslate('Good_Name')}, {tra.traslate('Available_Units')}, {tra.traslate('Price')}, {tra.traslate('Currency')}, {tra.traslate('Total_ARS_Price')} VALUES (CURRENT_TIMESTAMP, '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}', {self.calc_price()[1]});\n")
+                consult.write(f"INSERT INTO {tra.traslate('inventory_items')}({tra.traslate('Moment')}, {tra.traslate('Good_Name')}, {tra.traslate('Available_Units')}, {tra.traslate('Price')}, {tra.traslate('Currency')}, {tra.traslate('Total_ARS_Price')}) VALUES (datetime('now', 'localtime'), '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}', {self.calc_price()[1]});\n")
         consult.close()
         del consult
         # Load from the file and run in sqlite SQL manager
@@ -161,7 +161,7 @@ class Inventory():
         data = open(file_name, 'r')    
 
         import sqlite3
-        connection = sqlite3.connect('inventory.db')
+        connection = sqlite3.connect(f'{tra.traslate("inventory_items")}.db')
         cursor = connection.cursor()
         
         for command in data.readlines():
@@ -177,7 +177,7 @@ class Inventory():
         table: str = ''
         try:
             # Format table as text string
-            for row in cursor.execute('SELECT * FROM inventory_items;'):
+            for row in cursor.execute(f'SELECT * FROM {tra.traslate("inventory_items")};'):
                  # Run one time the fetchall method for add rows
                     table += (
                                 # Date

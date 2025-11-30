@@ -9,7 +9,7 @@ for word in [
                 ('Name', 'Nombre'), ('Moment', 'Momento'), 
                 ('Good_Name', 'Producto'),
                 ('Available_Units', 'Unidades'),
-                ('Currency', 'Divisa'),
+                ('Currency', 'Divisa'), ('inventory_itmes', 'inventario')
                 ('Total_ARS_Price', 'Precio_Total_Pesos_Argentinos')       
             ]:
     traslations.add_traslation('es', word[0], word[1])             
@@ -18,7 +18,7 @@ for word in [
                 ('Stock', 'Inventaire'), ('Product Name', 'Produit'),
                 ('Units In Stock', 'Unités En Inventaire'), ('Send', 'Envoyer'),
                 ('Price', 'Prix'), ('Date', 'Date'), ('Units','Unités'),   
-                ('Name', 'Nom')
+                ('Name', 'Nom'), ('inventory_items', 'inventaire')
             ]:
     traslations.add_traslation('fr', word[0], word[1])                    
 # Deutsch (German)
