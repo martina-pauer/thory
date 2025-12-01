@@ -122,25 +122,13 @@ for word in [
     traslations.add_traslation('uk', word[0], word[1])
 # Japanese
 for word in [
-                ('Stock', ''), ('Product Name', ''),
-                ('Units In Stock', ''), 
-                ('Send', ''), ('Price', ''), 
-                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
-                ('Available_Units', ''), ('Currency', ''),
-                ('Moment', ''), ('Good_Name', ''),
-                ('Total_ARS_Price', '') 
+                ('Stock', 'ストック'), ('Product Name', '製品名'),
+                ('Units In Stock', '在庫単位'), 
+                ('Send', '送信'), ('Price', '価格'), 
+                ('Date', '日付'), ('Units', '単位'), ('Name', '名前'), ('inventory_items', 'ストック'),
+                ('Available_Units', '利用可能な単位'), ('Currency', '通貨'),
+                ('Moment', '一瞬'), ('Good_Name', '製品名'),
+                ('Total_ARS_Price', '合計ars価格') 
             ]:
     # Lang Code, English Word, Translated Word        
     traslations.add_traslation('ja', word[0], word[1])
-# Corean
-for word in [
-                ('Stock', ''), ('Product Name', ''),
-                ('Units In Stock', ''), 
-                ('Send', ''), ('Price', ''), 
-                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
-                ('Available_Units', ''), ('Currency', ''),
-                ('Moment', ''), ('Good_Name', ''),
-                ('Total_ARS_Price', '') 
-            ]:
-    # Lang Code, English Word, Translated Word        
-    traslations.add_traslation('', word[0], word[1])
