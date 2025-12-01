@@ -62,13 +62,13 @@ for word in [
 """      
 # Portuguese
 for word in [
-                ('Stock', ''), ('Product Name', ''),
-                ('Units In Stock', ''), 
-                ('Send', ''), ('Price', ''), 
-                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
-                ('Available_Units', ''), ('Currency', ''),
-                ('Moment', ''), ('Good_Name', ''),
-                ('Total_ARS_Price', '') 
+                ('Stock', 'inventário'), ('Product Name', 'Nome Do Produto'),
+                ('Units In Stock', 'Unidades Em Stock'), 
+                ('Send', 'Enviar'), ('Price', 'preço'), 
+                ('Date', 'Data'), ('Units', 'Unidades'), ('Name', 'Nome'), ('inventory_items', 'inventario'),
+                ('Available_Units', 'Unidades_Disponiveis'), ('Currency', 'Moeda'),
+                ('Moment', 'Momento'), ('Good_Name', 'Nome_Do_Produto'),
+                ('Total_ARS_Price', 'Preco_Total_Peso') 
             ]:
     # Lang Code, English Word, Translated Word        
     traslations.add_traslation('pt', word[0], word[1]) 
