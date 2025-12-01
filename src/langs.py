@@ -18,7 +18,10 @@ for word in [
                 ('Stock', 'Inventaire'), ('Product Name', 'Produit'),
                 ('Units In Stock', 'Unités En Inventaire'), ('Send', 'Envoyer'),
                 ('Price', 'Prix'), ('Date', 'Date'), ('Units','Unités'),   
-                ('Name', 'Nom'), ('inventory_items', 'inventaire')
+                ('Name', 'Nom'), ('inventory_items', 'inventaire'),
+                ('Available_Units', 'Unites_Disponibles'), ('Currency', 'Devise'),
+                ('Moment', 'Moment'), ('Good_Name', 'Nom_Des_Merchandise'),
+                ('Total_ARS_Price', 'Prix_Total_Peso_Argentin') 
             ]:
     traslations.add_traslation('fr', word[0], word[1])                    
 # Deutsch (German)
@@ -26,7 +29,10 @@ for word in [
                 ('Stock', 'Inventar'), ('Product Name', 'Produkt'),
                 ('Units In Stock', 'Einheiten Im Bestand'),  ('Send', 'Schicken'),
                 ('Price','Preis'), ('Date', 'Datum'), ('Units', 'Einheiten'), 
-                ('Name', 'Name')
+                ('Name', 'Name'), ('inventory_items', 'inventar'),
+                ('Available_Units', 'Verfugbare_Einheiten'), ('Currency', 'Wahrung'),
+                ('Moment', 'Momet'), ('Good_Name', 'Name_Des_Produkts'),
+                ('Total_ARS_Price', 'Gesamt-Argentinischer-Preis') 
             ]:
     traslations.add_traslation('de', word[0], word[1])                    
 # Italian
@@ -34,6 +40,9 @@ for word in [
                 ('Stock', 'Inventario'), ('Product Name', 'Prodotto'),
                 ('Units In Stock', "Unità Nell' inventario"), 
                 ('Send', 'Inviare'), ('Price', 'Prezzo'), 
-                ('Date', 'Data'), ('Units', 'Unità'), ('Name', 'Nome')
+                ('Date', 'Data'), ('Units', 'Unità'), ('Name', 'Nome'), ('inventory_items', 'inventario'),
+                ('Available_Units', 'Unita_Disponibili'), ('Currency', 'Valuta'),
+                ('Moment', 'Momento'), ('Good_Name', 'Nome_Del_Prodotto'),
+                ('Total_ARS_Price', 'Prezzo_Totale_Peso_Argentino') 
             ]:
     traslations.add_traslation('it', word[0], word[1])      
