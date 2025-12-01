@@ -98,25 +98,25 @@ for word in [
     traslations.add_traslation('tr', word[0], word[1])
 # Russian
 for word in [
-                ('Stock', ''), ('Product Name', ''),
-                ('Units In Stock', ''), 
-                ('Send', ''), ('Price', ''), 
-                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
-                ('Available_Units', ''), ('Currency', ''),
-                ('Moment', ''), ('Good_Name', ''),
-                ('Total_ARS_Price', '') 
+                ('Stock', 'запас'), ('Product Name', 'название продукта'),
+                ('Units In Stock', 'единиц_на_складе'), 
+                ('Send', 'отправлять'), ('Price', 'цена'), 
+                ('Date', 'дата'), ('Units', 'единицы'), ('Name', 'имя'), ('inventory_items', 'запас'),
+                ('Available_Units', 'доступные_единицы'), ('Currency', 'валюта'),
+                ('Moment', 'момент'), ('Good_Name', 'название_продукта'),
+                ('Total_ARS_Price', 'общая_цена_арс') 
             ]:
     # Lang Code, English Word, Translated Word        
     traslations.add_traslation('ru', word[0], word[1])
 # Ukranian  
 for word in [
-                ('Stock', ''), ('Product Name', ''),
-                ('Units In Stock', ''), 
-                ('Send', ''), ('Price', ''), 
-                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
-                ('Available_Units', ''), ('Currency', ''),
-                ('Moment', ''), ('Good_Name', ''),
-                ('Total_ARS_Price', '') 
+                ('Stock', 'запас'), ('Product Name', 'назва продукту'),
+                ('Units In Stock', 'одиниць_на_складі'), 
+                ('Send', 'відправити'), ('Price', 'ціна'), 
+                ('Date', 'дата'), ('Units', 'одиниць'), ('Name', 'назва'), ('inventory_items', 'запас'),
+                ('Available_Units', 'доступні_одиниці'), ('Currency', 'валюта'),
+                ('Moment', 'момент'), ('Good_Name', 'назва_продукту'),
+                ('Total_ARS_Price', 'загальна_ціна_ars') 
             ]:
     # Lang Code, English Word, Translated Word        
     traslations.add_traslation('uk', word[0], word[1])
