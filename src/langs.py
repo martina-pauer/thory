@@ -45,4 +45,102 @@ for word in [
                 ('Moment', 'Momento'), ('Good_Name', 'Nome_Del_Prodotto'),
                 ('Total_ARS_Price', 'Prezzo_Totale_Peso_Argentino') 
             ]:
-    traslations.add_traslation('it', word[0], word[1])      
+    traslations.add_traslation('it', word[0], word[1]) 
+# Lang translations Format    
+"""
+    for word in [
+                ('Stock', ''), ('Product Name', ''),
+                ('Units In Stock', ''), 
+                ('Send', ''), ('Price', ''), 
+                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
+                ('Available_Units', ''), ('Currency', ''),
+                ('Moment', ''), ('Good_Name', ''),
+                ('Total_ARS_Price', '') 
+            ]:
+    # Lang Code, English Word, Translated Word        
+    traslations.add_traslation('', word[0], word[1])
+"""      
+# Portuguese
+for word in [
+                ('Stock', ''), ('Product Name', ''),
+                ('Units In Stock', ''), 
+                ('Send', ''), ('Price', ''), 
+                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
+                ('Available_Units', ''), ('Currency', ''),
+                ('Moment', ''), ('Good_Name', ''),
+                ('Total_ARS_Price', '') 
+            ]:
+    # Lang Code, English Word, Translated Word        
+    traslations.add_traslation('pt', word[0], word[1]) 
+# Chinese
+for word in [
+                ('Stock', ''), ('Product Name', ''),
+                ('Units In Stock', ''), 
+                ('Send', ''), ('Price', ''), 
+                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
+                ('Available_Units', ''), ('Currency', ''),
+                ('Moment', ''), ('Good_Name', ''),
+                ('Total_ARS_Price', '') 
+            ]:
+    # Lang Code, English Word, Translated Word        
+    traslations.add_traslation('zh', word[0], word[1])
+# Turkish
+for word in [
+                ('Stock', ''), ('Product Name', ''),
+                ('Units In Stock', ''), 
+                ('Send', ''), ('Price', ''), 
+                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
+                ('Available_Units', ''), ('Currency', ''),
+                ('Moment', ''), ('Good_Name', ''),
+                ('Total_ARS_Price', '') 
+            ]:
+    # Lang Code, English Word, Translated Word        
+    traslations.add_traslation('tr', word[0], word[1])
+# Russian
+for word in [
+                ('Stock', ''), ('Product Name', ''),
+                ('Units In Stock', ''), 
+                ('Send', ''), ('Price', ''), 
+                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
+                ('Available_Units', ''), ('Currency', ''),
+                ('Moment', ''), ('Good_Name', ''),
+                ('Total_ARS_Price', '') 
+            ]:
+    # Lang Code, English Word, Translated Word        
+    traslations.add_traslation('ru', word[0], word[1])
+# Ukranian  
+for word in [
+                ('Stock', ''), ('Product Name', ''),
+                ('Units In Stock', ''), 
+                ('Send', ''), ('Price', ''), 
+                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
+                ('Available_Units', ''), ('Currency', ''),
+                ('Moment', ''), ('Good_Name', ''),
+                ('Total_ARS_Price', '') 
+            ]:
+    # Lang Code, English Word, Translated Word        
+    traslations.add_traslation('uk', word[0], word[1])
+# Japanese
+for word in [
+                ('Stock', ''), ('Product Name', ''),
+                ('Units In Stock', ''), 
+                ('Send', ''), ('Price', ''), 
+                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
+                ('Available_Units', ''), ('Currency', ''),
+                ('Moment', ''), ('Good_Name', ''),
+                ('Total_ARS_Price', '') 
+            ]:
+    # Lang Code, English Word, Translated Word        
+    traslations.add_traslation('ja', word[0], word[1])
+# Corean
+for word in [
+                ('Stock', ''), ('Product Name', ''),
+                ('Units In Stock', ''), 
+                ('Send', ''), ('Price', ''), 
+                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
+                ('Available_Units', ''), ('Currency', ''),
+                ('Moment', ''), ('Good_Name', ''),
+                ('Total_ARS_Price', '') 
+            ]:
+    # Lang Code, English Word, Translated Word        
+    traslations.add_traslation('', word[0], word[1])
