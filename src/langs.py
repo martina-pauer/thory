@@ -74,25 +74,25 @@ for word in [
     traslations.add_traslation('pt', word[0], word[1]) 
 # Chinese
 for word in [
-                ('Stock', ''), ('Product Name', ''),
-                ('Units In Stock', ''), 
-                ('Send', ''), ('Price', ''), 
-                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
-                ('Available_Units', ''), ('Currency', ''),
-                ('Moment', ''), ('Good_Name', ''),
-                ('Total_ARS_Price', '') 
+                ('Stock', '存货'), ('Product Name', '产品名称'),
+                ('Units In Stock', '库存单位'), 
+                ('Send', '发送'), ('Price', '价格'), 
+                ('Date', '日期'), ('Units', '单位'), ('Name', '姓名'), ('inventory_items', '存货'),
+                ('Available_Units', '可用单位'), ('Currency', '货币'),
+                ('Moment', '片刻'), ('Good_Name', '产品名称'),
+                ('Total_ARS_Price', '总价（阿根廷比索）') 
             ]:
     # Lang Code, English Word, Translated Word        
     traslations.add_traslation('zh', word[0], word[1])
 # Turkish
 for word in [
-                ('Stock', ''), ('Product Name', ''),
-                ('Units In Stock', ''), 
-                ('Send', ''), ('Price', ''), 
-                ('Date', ''), ('Units', ''), ('Name', ''), ('inventory_items', ''),
-                ('Available_Units', ''), ('Currency', ''),
-                ('Moment', ''), ('Good_Name', ''),
-                ('Total_ARS_Price', '') 
+                ('Stock', 'Envanter'), ('Product Name', 'Urunun_Ad'),
+                ('Units In Stock', 'Stoktaki Birimler'), 
+                ('Send', 'Gondermek'), ('Price', 'Fiyats'), 
+                ('Date', 'Tarih'), ('Units', 'Birimler'), ('Name', 'Isim'), ('inventory_items', 'envanter'),
+                ('Available_Units', 'Mevcut_Birimler'), ('Currency', 'Para_Birimi'),
+                ('Moment', 'An'), ('Good_Name', 'Urunun_Ad'),
+                ('Total_ARS_Price', 'Arjantin_cinsinden_toplam_fiyat') 
             ]:
     # Lang Code, English Word, Translated Word        
     traslations.add_traslation('tr', word[0], word[1])
