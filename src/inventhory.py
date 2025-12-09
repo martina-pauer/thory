@@ -126,28 +126,20 @@ class Inventory():
 
             Return the resultant SQL table    
         '''
-        consult = open('info.sqlite', 'a')
         # Do table for this inventory in particular
         # Columns in table: moment, good_name, available_units, price, currency
-        consult.write(f'CREATE TABLE {tra.traslate("inventory_items")} ({tra.traslate("Moment")} timestamp, {tra.traslate("Good_Name")} varchar(255), {tra.traslate("Available_Units")} int, {tra.traslate("Price")} FLOAT(8, 2), {tra.traslate("Currency")} varchar(3), {tra.traslate("Total_ARS_Price")} FLOAT(8, 2));\n')
-        # Insert values from this inventory        
+        self.load(f'CREATE TABLE {tra.traslate("inventory_items")} ({tra.traslate("Moment")} timestamp, {tra.traslate("Good_Name")} varchar(255), {tra.traslate("Available_Units")} int, {tra.traslate("Price")} FLOAT(8, 2), {tra.traslate("Currency")} varchar(3), {tra.traslate("Total_ARS_Price")} FLOAT(8, 2));\n')
+        # Insert values from this inventory  
+        result: str = ''      
         for item in self.items:
                 item.fix_types()
-                consult.write(f"INSERT INTO {tra.traslate('inventory_items')}({tra.traslate('Moment')}, {tra.traslate('Good_Name')}, {tra.traslate('Available_Units')}, {tra.traslate('Price')}, {tra.traslate('Currency')}, {tra.traslate('Total_ARS_Price')}) VALUES (datetime('now', 'localtime'), '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}', {self.calc_price()[1]});\n")
-        consult.close()
-        del consult
-        # Load from the file and run in sqlite SQL manager
-        result: str = self.load('info.sqlite')
-        # remove file by security
-        import os
-        os.remove('info.sqlite')
-        del os # END OS LIFECYCLE BY SECURITY
+                result = self.load(f"INSERT INTO {tra.traslate('inventory_items')}({tra.traslate('Moment')}, {tra.traslate('Good_Name')}, {tra.traslate('Available_Units')}, {tra.traslate('Price')}, {tra.traslate('Currency')}, {tra.traslate('Total_ARS_Price')}) VALUES (datetime('now', 'localtime'), '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}', {self.calc_price()[1]});\n")
         # Give the table as text to the next process
         return result
 
-    def load(self, file_name: str) -> str:
+    def load(self, command: str) -> str:
         '''
-            Load SQL files with inventory_item table
+            Load SQL requests with inventory_items table
             with the columns:
                 moment,
                 good_name, 
@@ -158,21 +150,16 @@ class Inventory():
 
             Return the text with the data as table.    
         '''
-        data = open(file_name, 'r')    
-
         import sqlite3
         connection = sqlite3.connect(f'{tra.traslate("inventory_items")}.db')
         cursor = connection.cursor()
-        
-        for command in data.readlines():
-            command = command.replace('\n', '')
-            # Run with sqlite3
-            try:
-                # Handle exceptions like table already created or similar
-                cursor.execute(command)
-                connection.commit()
-            except:
-                print(f'Mistake in SQL command {command}')
+        # Run with sqlite3
+        try:
+             # Handle exceptions like table already created or similar
+             cursor.execute(command)
+             connection.commit()
+        except:
+             print(f'Mistake in SQL command {command}')
         # Run a select command for make work fetchall method 
         table: str = ''
         try:
@@ -191,10 +178,8 @@ class Inventory():
                                 + '  |  \n'
                             )    
         except:
-            print('Waiting for inventory_items table creation...\n')                    
+            print('Waiting for inventory_items table creation...\n')  
         connection.close()
         del connection, sqlite3    
-        data.close() 
-        del data
         # Give data  
         return table

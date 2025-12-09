@@ -6,6 +6,10 @@ class Traslator():
             traslations for a software
         '''
         self.lang_dicts: dict = dict()
+        # Get and save the language code
+        from locale import getlocale
+        # Use code of two characters of system language code
+        self.code = getlocale()[0][0 : 2]
 
     def  add_traslation(self, code: str, source_word: str, target_word):
         '''
@@ -21,11 +25,7 @@ class Traslator():
             Give traslation for a word
             only if are defined.
         '''
-        import locale
-        # Use code of two characters of system language code
-        code = locale.getlocale()[0][0 : 2]
-
-        if code in self.lang_dicts.keys():
-            return self.lang_dicts[code][word]
+        if self.code in self.lang_dicts.keys():
+            return self.lang_dicts[self.code][word]
         else:
             return word
