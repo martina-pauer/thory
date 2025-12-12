@@ -2,7 +2,7 @@ import langs
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-from gi.repository import Gdk
+from gi.repository.Gdk import Screen
 # Define Specific software traslations
 tra = langs.traslations                
 # Define reusable graphics
@@ -239,7 +239,7 @@ class Tables(Gtk.Window):
 
         context = Gtk.StyleContext()
 
-        viewer = Gdk.Screen()
+        viewer = Screen()
 
         context.add_provider_for_screen (
                                             viewer.get_default(),
