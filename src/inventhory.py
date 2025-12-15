@@ -1,7 +1,5 @@
 import langs
 
-tra = langs.traslations
-
 class Good():
     '''
         Represents the inventory good
@@ -128,12 +126,12 @@ class Inventory():
         '''
         # Do table for this inventory in particular
         # Columns in table: moment, good_name, available_units, price, currency
-        self.load(f'CREATE TABLE {tra.traslate("inventory_items")} ({tra.traslate("Moment")} timestamp, {tra.traslate("Good_Name")} varchar(255), {tra.traslate("Available_Units")} int, {tra.traslate("Price")} FLOAT(8, 2), {tra.traslate("Currency")} varchar(3), {tra.traslate("Total_ARS_Price")} FLOAT(8, 2));\n')
+        self.load(f'CREATE TABLE {langs.traslations.traslate("inventory_items")} ({langs.traslations.traslate("Moment")} timestamp, {langs.traslations.traslate("Good_Name")} varchar(255), {langs.traslations.traslate("Available_Units")} int, {langs.traslations.traslate("Price")} FLOAT(8, 2), {langs.traslations.traslate("Currency")} varchar(3), {langs.traslations.traslate("Total_ARS_Price")} FLOAT(8, 2));\n')
         # Insert values from this inventory  
         result: str = ''      
         for item in self.items:
                 item.fix_types()
-                result = self.load(f"INSERT INTO {tra.traslate('inventory_items')}({tra.traslate('Moment')}, {tra.traslate('Good_Name')}, {tra.traslate('Available_Units')}, {tra.traslate('Price')}, {tra.traslate('Currency')}, {tra.traslate('Total_ARS_Price')}) VALUES (datetime('now', 'localtime'), '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}', {self.calc_price()[1]});\n")
+                result = self.load(f"INSERT INTO {langs.traslations.traslate('inventory_items')}({langs.traslations.traslate('Moment')}, {langs.traslations.traslate('Good_Name')}, {langs.traslations.traslate('Available_Units')}, {langs.traslations.traslate('Price')}, {langs.traslations.traslate('Currency')}, {langs.traslations.traslate('Total_ARS_Price')}) VALUES (datetime('now', 'localtime'), '{item.name}', {item.count}, {item.price[1]}, '{item.price[0]}', {self.calc_price()[1]});\n")
         # Give the table as text to the next process
         return result
 
@@ -151,7 +149,7 @@ class Inventory():
             Return the text with the data as table.    
         '''
         import sqlite3
-        connection = sqlite3.connect(f'{tra.traslate("inventory_items")}.db')
+        connection = sqlite3.connect(f'{langs.traslations.traslate("inventory_items")}.db')
         cursor = connection.cursor()
         # Run with sqlite3
         try:
@@ -164,7 +162,7 @@ class Inventory():
         table: str = ''
         try:
             # Format table as text string
-            for row in cursor.execute(f'SELECT * FROM {tra.traslate("inventory_items")};'):
+            for row in cursor.execute(f'SELECT * FROM {langs.traslations.traslate("inventory_items")};'):
                  # Run one time the fetchall method for add rows
                     table += (
                                 # Date
