@@ -126,7 +126,7 @@ class Inventory():
         '''
         # Do table for this inventory in particular
         # Columns in table: moment, good_name, available_units, price, currency
-        self.load(f'CREATE TABLE {langs.traslations.traslate("inventory_items")} ({langs.traslations.traslate("Moment")} timestamp, {langs.traslations.traslate("Good_Name")} varchar(255), {langs.traslations.traslate("Available_Units")} int, {langs.traslations.traslate("Price")} FLOAT(8, 2), {langs.traslations.traslate("Currency")} varchar(3), {langs.traslations.traslate("Total_ARS_Price")} FLOAT(8, 2));\n')
+        self.load(f'CREATE TABLE {langs.traslations.traslate("inventory_items")} ({langs.traslations.traslate("Moment")} timestamp, {langs.traslations.traslate("Good_Name")} varchar(255), {langs.traslations.traslate("Available_Units")} int, {langs.traslations.traslate("Price")} FLOAT(8, 2), {langs.traslations.traslate("Currency")} varchar(3), {langs.traslations.traslate("Total_ARS_Price")} DECIMAL(8, 2));\n')
         # Insert values from this inventory  
         result: str = ''      
         for item in self.items:
