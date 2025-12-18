@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = "utf-8" />
+        <meta name = "viewport" content = "height=device-height, width = device-width, initial-scale = 1.0"/>
+        <meta name = "author" content = "Martina Pauer" />
+        <meta name = "keyword" content = "pauer,martina,Martina,Pauer,thory,inventhory,stock,tool" />
+        <title>Thory - Inventhory Tool</title>
+        <link rel = "stylesheet" href = "src/theme.css" />
+    </head>
+    <body>
+        <form id = "thory-input" method = "post">
+            <input id = "thory-product" type = "text" placeholder = "Product Name" />
+            <input id = "thory-units" type = "number" placeholder = "Units In Stock" />
+            <input id = "thory-sending" type = "submit"  value = "Send"/>
+            <select id = "thory-currency" class = "selector">
+                <option>ARS</option>
+                <option>USD</option>
+                <option>£</option>
+            </select>
+        </form>
+        <table id = "thory-products">
+            <tr>[ Date | Name | Units | Price ]</tr>
+            <hr />
+        </table>
+        <label id = "thory-total">Total Price: </label>
+    </body>    
+</html>

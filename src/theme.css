@@ -1,4 +1,4 @@
-*, button
+*, input[type="submit"]
 {
     background: #ffffff;
     color: #0029aa;
@@ -7,19 +7,19 @@
     padding: 0.2em;
 }
 
-entry
+input
 {
     background: #75aadb;
     color: #843511;
 }
 
-combobox *.combo
+.selector
 {
     border: 1px solid #823210;
     background: #03d3fc;
 }
 
-entry:focus, button:hover, button:hover > *
+input:focus, input[type=submit]:hover, input[type=submit]:hover > *
 {
     background: #823210;
     color: #03d3fc;
