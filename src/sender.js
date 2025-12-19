@@ -5,7 +5,7 @@ function sendToServer()
     let data = {
         "product" : document.getElementById("thory-product").value,
         "units": document.getElementById("thory-units").value,
-        "currency": document.getElementById("thory-currency")
+        "currency": document.getElementById("thory-currency").value
 
     };
     // Modify in the future WHEN KNOW HOW SEND TO PYTHON BACKEND
