@@ -5,9 +5,11 @@ function sendToServer()
     let data = {
         "product" : document.getElementById("thory-product").value,
         "units": document.getElementById("thory-units").value,
-        "currency": document.getElementById("thory-currency").value
+        "currency": document.getElementById("thory-currency").value,
+        "price": document.getElementById("thory-price").value
 
     };
-    // Modify in the future WHEN KNOW HOW SEND TO PYTHON BACKEND
-    console.log(data);
+    // Storage as Cookies for get later with Flask and split(',') mwthod
+    output = data.product + ',' + data.units + ',' + data.currency + ',' + data.price;
+    document.cookie = "thory=" + output + ";expires=; path=/ samesite";
 }
