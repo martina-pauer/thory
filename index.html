@@ -6,12 +6,13 @@
         <meta name = "keyword" content = "pauer,martina,Martina,Pauer,thory,inventhory,stock,tool" />
         <title>Thory - Inventhory Tool</title>
         <link rel = "stylesheet" href = "src/theme.css" />
+        <script type = "text/javascript" src = "src/sender.js"></script>
     </head>
     <body>
-        <form id = "thory-input" method = "post">
+        <form id = "thory-input">
             <input id = "thory-product" type = "text" placeholder = "Product Name" />
             <input id = "thory-units" type = "number" placeholder = "Units In Stock" />
-            <input id = "thory-sending" type = "submit"  value = "Send"/>
+            <button id = "thory-sending" onclick = "javascript: sendToServer():">Send</button>
             <select id = "thory-currency" class = "selector">
                 <option>ARS</option>
                 <option>USD</option>
