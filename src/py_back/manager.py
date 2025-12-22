@@ -1,5 +1,21 @@
 import langs
-         
+from flask import Flask
+from flask import request, render_template_string
+import os
+
+web = Flask(__name__)         
+
+def text_content(path: str) -> str:
+     '''
+        Give content of a file entire
+        only text without escape chars
+     '''
+     content = ''
+     
+     for line in open(path, 'r').readlines():
+        content += line.replace('\n', '')
+
+     return content   
 # Define thory web logic in Flask
 class Tables():
     def __init__(self, tab: str):
@@ -28,38 +44,35 @@ class Tables():
         self.entries: int = 4
 
         self.external: None = int(0)
-        
+
+    @web.route('/sended')   
     def get_inputs(self):
         '''
-            Get forms values from JSON
+            Get forms values from cookies
             using flask
         '''
-        #######################################################
-        for input_data in data.keys():
-            # Get JSON sended by the page and add to row data
-            self.row.append(data[input_data])
-            # Update interface everytime the input changes sending reponse JSON
-            ####################################################################
-             
+        cookie = request.get('thory').split(',')
+        # Update currency name
+        self.option = cookie[2]
+        # Delete data that don't need now
+        cookie.pop(2)
+        # Get values from imputs excluding currency name
+        for input_data in cookie:
+            # Get sended by the page and add to row data
+            self.row.append(input_data)
+        return render_template_string(text_content('index.html'), result = '')
+
+    @web.route('/')                
     def last_outputs(self, outputs: list[str]):
         '''
             Give text to display
-            in the end send JSON to
+            in the end send to 
             the web page using flask
         '''
+        self.run()
         for output in outputs:
-            pass
-            
-    def parametric_input(self):
-         '''
-            Select paramater from menu
-            and give it value using Flask
-         '''  
-         # Get option from the form
-         ########################################
-         self.option = data["thory-currency"]
-         
-
+            return f'{text_content("index.html")}<h1>{output}</h1>'
+                     
     def update(self):
         '''
             Send data and update web, show result
@@ -75,8 +88,8 @@ class Tables():
         # Update table with new data
         self.table += f'\n{"-" * (self.row_length + text.__len__())}\n{text}|\n'
         del text
-        # Send JSON for update web table and reload
-        ###############################################
+        # Update web table and reload
+        
     def send_data(self):
             '''
                 Event when the data are loaded
@@ -88,6 +101,8 @@ class Tables():
             self.external()
             # Restart for load more products
             self.row: list[str] = []
+
+            self.get_inputs()
         
     def run(self):
          '''
@@ -95,4 +110,4 @@ class Tables():
             interface
          '''
          # Send data to page with response JSON
-         pass
+         os.system(f'~/.local/bin/flask {__name__} --app run')

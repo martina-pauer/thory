@@ -39,9 +39,6 @@ def storage():
         app.update()
 # Main code    
 app = Tables('')
-# Define the data getting
-app.get_inputs()
-
 app.parametric_input(
         ['ARS', 'USD', '€', '£'],
         'Price'    
