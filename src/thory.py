@@ -22,15 +22,25 @@ def storage():
                 # When the price is ARSED (pesificado) leave of that way
                 product.price = ['ARS', float(app.row[3])]
                 # Only make convertion when the selected currency is diff to ARS
-                if app.option == 'USD':
+                ######################################################################################
+                #if app.option == 'USD':
                         # Convert from Law Dollar to ARS
-                        product.convert(1475.00, 'ARS')
-                elif app.option == '€':
+                #        product.convert(1475.00, 'ARS')
+                #elif app.option == '€':
                         # Only need change the saved amount for don't search the same data
-                        product.convert(1844.55, 'ARS')
-                elif app.option == '£':
+                #        product.convert(1844.55, 'ARS')
+                #elif app.option == '£':
                         # Pounds Value  
-                        product.convert(2026.65, 'ARS')         
+                #        product.convert(2026.65, 'ARS') 
+                ############ Two lines less, more escalable from O(3n) to O(2n) #####################        
+                # Use Decision Map with dicts for get better time in Python 3.9 (match is from 3.10)
+                currency_select = {
+                                        'USD':  product.convert(1475, 'ARS'),
+                                        '€':    product.convert(1844.55, 'ARS'),
+                                        '£':    product.convert(2026.65, 'ARS')
+                                  }
+
+                currency_select[app.option]                  
                 # When select one of defined curreuncies different to ARS make converrtion                     
                 product.count = int(app.row[1])
                 # Storage in database
