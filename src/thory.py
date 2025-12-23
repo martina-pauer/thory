@@ -35,12 +35,12 @@ def storage():
                 ############ Two lines less, more escalable from O(3n) to O(2n) #####################        
                 # Use Decision Map with dicts for get better time in Python 3.9 (match is from 3.10)
                 currency_select = {
-                                        'USD':  product.convert(1475, 'ARS'),
-                                        '€':    product.convert(1844.55, 'ARS'),
-                                        '£':    product.convert(2026.65, 'ARS')
+                                        'USD':  lambda price = 1475.00: product.convert(price, 'ARS'),
+                                        '€':    lambda price = 1844.55: product.convert(price, 'ARS'),
+                                        '£':    lambda price = 2026.65: product.convert(price, 'ARS')
                                   }
 
-                currency_select[app.option]                  
+                currency_select.get(app.option)()               
                 # When select one of defined curreuncies different to ARS make converrtion                     
                 product.count = int(app.row[1])
                 # Storage in database
