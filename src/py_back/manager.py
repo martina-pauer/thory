@@ -120,4 +120,4 @@ class Tables():
             interface
          '''
          # Send data to page with response JSON
-         os.system(f'~/.local/bin/flask {__name__} --app run')
+         os.system(f'flask {__name__} --app run')
