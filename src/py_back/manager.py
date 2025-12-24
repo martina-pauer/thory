@@ -51,7 +51,7 @@ class Tables():
             Get forms values from cookies
             using flask
         '''
-        cookie = request.get('thory').split(',')
+        cookie = request.cookies.get('thory').split(',')
         # Update currency name
         self.option = cookie[2]
         # Delete data that don't need now
@@ -70,8 +70,19 @@ class Tables():
             the web page using flask
         '''
         self.run()
+        
+        content = list(text_content('index.html'))
+
+        counter = 1
+         
         for output in outputs:
-            return f'{text_content("index.html")}<h1>{output}</h1>'
+            # Insert from last label to first label
+            content.insert((content.index('</label>') - counter), f'<h1>{output}</h1>')
+            counter += 1
+        # Insert inside <table> tag
+        content.insert((content.index('</table>') - 1), self.table)
+            
+        return content.__str__()
                      
     def update(self):
         '''
@@ -88,7 +99,6 @@ class Tables():
         # Update table with new data
         self.table += f'\n{"-" * (self.row_length + text.__len__())}\n{text}|\n'
         del text
-        # Update web table and reload
         
     def send_data(self):
             '''
