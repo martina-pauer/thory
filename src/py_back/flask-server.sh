@@ -4,4 +4,4 @@ sleep 1
 pip3 install flask
 echo 'Running Flask web...'
 sleep 2
-chmod +x thory && ./thory
+chmod +x thory.py && ./thory.py
