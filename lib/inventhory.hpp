@@ -34,12 +34,19 @@ class Good
         void set_count(int recount)
         {
             // Set new count of available units in stock
-            this -> count = recount;
+            if ((recount >= 1) && (recount <= 2147483647))
+            {
+                this -> count = recount;
+            }
+            else
+            {
+                this -> count = 2;    
+            }    
         }
             
         void calc_price()
         {
-            this -> price = Money(this -> price.get_currency(), this -> price.get_amount() * this -> count);
+            this -> price = Money(this -> price.get_currency(), this -> price.get_amount() * this -> count);       
         }
 
         void convert(float equivalence, std :: string currency)
@@ -76,7 +83,48 @@ class Inventhory
             this -> goods = 1;
             this -> count = 0;
         }
+
+        void update()
+        {
+
+        }
         
+        void add(Good product)
+        {
+            this -> items.push_back(product);
+        }
+
+        Money[] calc_price()
+        {
+            Money[] prices = {};
+
+            for (int index = 0; index < sizeof(this -> items) / sizeof(this -> items[0]); index++)
+            {
+                this -> items[index].calc_price()
+            }
+
+            return prices;
+        }
+
+        std :: string save()
+        {
+            // Save in database and get table text
+        }
+
+        Good[] get_items()
+        {
+            return this -> items;
+        }
+
+        int get_goods()
+        {
+            return this -> goods;
+        }
+
+        int get_count()
+        {
+            return this -> count;
+        }
     private:
         Good[] items;
         int goods;
