@@ -86,7 +86,20 @@ class Inventhory
 
         void update()
         {
-
+            // Compare all the items gor counts kinda goods
+            Good before = this -> items[0];
+            for (int first_element = 1; first_element < sizeof(this -> items) / sizeof(this -> items[0]); first_element++) 
+            {
+                // Compare the first elements with the next for counts repeats
+                for (int second_element = 2; second_element < sizeof(this -> items) / sizeof(this -> items[0]); second_element++)
+                {
+                    if (before != this -> items[second_element])
+                    {
+                        this -> goods += 1;
+                    }
+                }
+                before = this -> items[first_element];
+            }
         }
         
         void add(Good product)
