@@ -50,12 +50,37 @@ impl Inventhory
 {
     pub fn update(&self)
     {
+        // Check that all properties are up to date
+        if (self.count < self.items.length)
+        {
+            let mut before : Good = self.items[0];
 
+            let mut index_first : u32 = 1;
+            let mut index_second : u32 = 1;
+
+            while (index_first < self.items.len())
+            {
+                // Compare the first with each elemnts in the list
+                    while (index_second < self.items.len())
+                    {
+                        if before != self.items[index_second]
+                        {
+                          // Count only the repeats of each product in the list  
+                            self.goods = self.goods + 1;
+                        }
+                        index_second = index_second + 1;
+                    }    
+                    before = self.items[index_first]
+            }
+        }
+        // Count the items in total not matter repeat
+        self.count = self.items,length;
     }
 
-    pub fn add(&self)
+    pub fn add(&self, product : Good)
     {
-
+        self.items.push(product);
+        self.update();
     }
 
     pub fn calc_price(&self) -> (&str, f32)
