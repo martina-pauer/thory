@@ -1,6 +1,18 @@
+#include <string>
+#include "lang.hpp"
+
 class Money
 {
+    private:
+        std :: string currency; 
+        float amount;    
     public:
+        Money()
+        {
+            this -> currency = "ARS";
+            this -> amount = 3000.00;
+        }
+
         Money(std :: string cur, float price)
         {
             this -> currency = cur;
@@ -15,15 +27,24 @@ class Money
         std :: string get_currency()
         {
             return this -> currency;
-        }    
-    private:
-        std :: string currency; 
-        float amount;   
+        }
 };
 
 class Good
 {
+    private:
+        std :: string name;
+        Money price;
+        int count;    
     public:
+        Good()
+        {
+            // Use constructor overload only for turn this into a type for clone objects into a list
+            this -> count = 1;
+            this -> name = "some";
+            this -> price = Money();
+        }
+
         Good(std :: string naming, Money price_object)
         {
             this -> name = naming;
@@ -67,15 +88,15 @@ class Good
         int get_count()
         {
             return this -> count;
-        }     
-    private:
-        std :: string name;
-        Money price;
-        int count;
+        }
 };
 
 class Inventhory
 {
+    private:
+        Good[] items;
+        int goods;
+        int count;
     public:
         Inventhory()
         {
@@ -122,6 +143,8 @@ class Inventhory
         std :: string save()
         {
             // Save in database and get table text
+            std :: string consult = "CREATE TABLE " + langs.traslations.traslate("inventory_items") + "(" + langs.traslations.traslate("Moment") + " timestamp, " + langs.traslations.traslate("Good_Name") + " varchar(255), " + langs.traslations.traslate("Available_Units")} + " int, " + langs.traslations.traslate("Price") + " DECIMAL(6, 2), " + langs.traslations.traslate("Currency") + " varchar(3), " + langs.traslations.traslate("Total_ARS_Price") + " DECIMAL(6, 2));";
+            
         }
 
         Good[] get_items()
@@ -138,9 +161,4 @@ class Inventhory
         {
             return this -> count;
         }
-    private:
-        Good[] items;
-        int goods;
-        int count;
-
 };
