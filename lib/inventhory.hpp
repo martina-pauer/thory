@@ -1,4 +1,5 @@
 #include <string>
+#include <sqlapi.h>
 #include "lang.hpp"
 
 class Money
@@ -144,10 +145,23 @@ class Inventhory
         {
             // Save in database and get table text
             std :: string consult = "CREATE TABLE " + langs.traslations.traslate("inventory_items") + "(" + langs.traslations.traslate("Moment") + " timestamp, " + langs.traslations.traslate("Good_Name") + " varchar(255), " + langs.traslations.traslate("Available_Units")} + " int, " + langs.traslations.traslate("Price") + " DECIMAL(6, 2), " + langs.traslations.traslate("Currency") + " varchar(3), " + langs.traslations.traslate("Total_ARS_Price") + " DECIMAL(6, 2));";
+            // Define connection to database and commands
+            SAConnection connection;
+            SACommand cmd;
+            // Connect to database
+            connection.Connect("test", "tester" "tester", SA_oracle_Client);
+            cmd.SetCommandText(consult);
+            // Make changes in database
+            cmd.execute();
+            connection.Commit();
+            // Add each product from inventory to SQL database
             for (int good_index = 0; good_index < sizeof(this -> items) / sizeof(this -> items[0]); good_index++)
             {
                 Good item = this -> items[good_index];
                 std :: string insertion = "INSERT INTO " + langs.traslations.traslate('inventory_items') + "(" + langs.traslations.traslate('Moment') + ", " + langs.traslations.traslate('Good_Name') + ", " + langs.traslations.traslate('Available_Units') + ", " + langs.traslations.traslate('Price') + ", " + langs.traslations.traslate('Currency') + ", " + langs.traslations.traslate('Total_ARS_Price') + ") VALUES (datetime('now', 'localtime'), '" + item.name + "', " + item.count + ", " + item.price[1] + ", '" + item.price[0] + "', " + this -> calc_price()[1] + ")";
+                cmd.SetCommandText(insertion);
+                cmd.execute();
+                connection.Commit();
             }
             std :: string result = "";
             return result;
