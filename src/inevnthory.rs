@@ -100,7 +100,7 @@ impl Inventhory
        // Storage data in database and give table ass text 
         let mut table : &str = "";
       // SQL requests  
-        let consult : String = String :: from("CREATE TABLE " + langs.traslations.traslate("inventory_items") + "(" + langs.traslations.traslate("Moment") + " timestamp, " + langs.traslations.traslate("Good_Name") + " varchar(255), " + langs.traslations.traslate("Available_Units")} + " int, " + langs.traslations.traslate("Price") + " DECIMAL(6, 2), " + langs.traslations.traslate("Currency") + " varchar(3), " + langs.traslations.traslate("Total_ARS_Price") + " DECIMAL(6, 2));");
+        let consult : String = String :: from("CREATE TABLE ") + langs.traslations.traslate("inventory_items") + String :: from("(") + langs.traslations.traslate("Moment") + String :: from(" timestamp, ") + langs.traslations.traslate("Good_Name") + String from(" varchar(255), ") + langs.traslations.traslate("Available_Units")} + String :: from(" int, ") + langs.traslations.traslate("Price") + String :: from(" DECIMAL(6, 2), ") + langs.traslations.traslate("Currency") + String :: from(" varchar(3), ") + langs.traslations.traslate("Total_ARS_Price") + String :: from(" DECIMAL(6, 2));"));
      // Run SQL commands from the reuqests
         let connection : &mut PgConnection; 
         const conn_num  : u32 = 1;
@@ -108,7 +108,7 @@ impl Inventhory
      // insert values
         for item in self.items
         {   
-            let insertion : String = String :: from("INSERT INTO " + langs.traslations.traslate('inventory_items') + "(" + langs.traslations.traslate('Moment') + ", " + langs.traslations.traslate('Good_Name') + ", " + langs.traslations.traslate('Available_Units') + ", " + langs.traslations.traslate('Price') + ", " + langs.traslations.traslate('Currency') + ", " + langs.traslations.traslate('Total_ARS_Price') + ") VALUES (datetime('now', 'localtime'), '" + item.name + "', " + item.count + ", " + item.price[1] + ", '" + item.price[0] + "', " + self.calc_price()[1] + ")");
+            let insertion : String = String :: from("INSERT INTO ") + langs.traslations.traslate('inventory_items') + String :: from("(") + langs.traslations.traslate('Moment') + String :: from(", ") + langs.traslations.traslate('Good_Name') + String :: from(", ") + langs.traslations.traslate('Available_Units') + String :: from(", ") + langs.traslations.traslate('Price') + String :: from(", ") + langs.traslations.traslate('Currency') + String :: from(", ") + langs.traslations.traslate('Total_ARS_Price') + String :: from(") VALUES (datetime('now', 'localtime'), '") + String :: from(item.get_name()) + String :: from("', ") + String :: from(item.get_count()) + String :: from(", ") + String :: from(item.get_price[1]) + String :: from(", '") + String :: from (item.get_price[0]) + String :: from("', ") + String :: from(self.calc_price()[1]) + String :: from(")"));
             // Make insertion to SQL database
             let insert = sql_query(insertion).bind :: <Int4, _>(conn_num).load :: <User>(connection)?;
         }    
