@@ -1,3 +1,6 @@
+use diesel :: sql_query;
+use diesel :: r2d2 :: {ConnectionManager, PooledConnection};
+
 pub struct Good
 { 
     // Atributes
@@ -98,13 +101,19 @@ impl Inventhory
         let mut table : &str = "";
       // SQL requests  
         let consult : String = String :: from("CREATE TABLE " + langs.traslations.traslate("inventory_items") + "(" + langs.traslations.traslate("Moment") + " timestamp, " + langs.traslations.traslate("Good_Name") + " varchar(255), " + langs.traslations.traslate("Available_Units")} + " int, " + langs.traslations.traslate("Price") + " DECIMAL(6, 2), " + langs.traslations.traslate("Currency") + " varchar(3), " + langs.traslations.traslate("Total_ARS_Price") + " DECIMAL(6, 2));");
-     // Run SQL commands from the reuqests   
+     // Run SQL commands from the reuqests
+        let connection : &mut PgConnection; 
+        const conn_num  : u32 = 1;
+        let results = sql_query(consult).bind :: <Int4, _>(conn_num).load :: <User>(connection)?;
      // insert values
         for item in self.items
         {   
             let insertion : String = String :: from("INSERT INTO " + langs.traslations.traslate('inventory_items') + "(" + langs.traslations.traslate('Moment') + ", " + langs.traslations.traslate('Good_Name') + ", " + langs.traslations.traslate('Available_Units') + ", " + langs.traslations.traslate('Price') + ", " + langs.traslations.traslate('Currency') + ", " + langs.traslations.traslate('Total_ARS_Price') + ") VALUES (datetime('now', 'localtime'), '" + item.name + "', " + item.count + ", " + item.price[1] + ", '" + item.price[0] + "', " + self.calc_price()[1] + ")");
             // Make insertion to SQL database
+            let insert = sql_query(insertion).bind :: <Int4, _>(conn_num).load :: <User>(connection)?;
         }    
+
+        table = (sql_query("SELECT * FROM " + langs.traslations.traslate('inventory_items') + ";").bind :: <Int4, _>(conn_num).load :: <User>(connection)?).get_results();
         return table;
     }
 
