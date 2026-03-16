@@ -24,9 +24,9 @@ def storage():
                 # Only make convertion when the selected currency is diff to ARS       
                 # Use Decision Map with dicts for get better time in Python 3.9 (match is from 3.10)
                 currency_select = {
-                                        'USD':  lambda price = 1425.00: product.convert(price, 'ARS'),
-                                        '€':    lambda price = 1782.02: product.convert(price, 'ARS'),
-                                        '£':    lambda price = 1957.95: product.convert(price, 'ARS')
+                                        'USD':  lambda price = 1410.00: product.convert(price, 'ARS'),
+                                        '€':    lambda price = 1763.26: product.convert(price, 'ARS'),
+                                        '£':    lambda price = 1937.34: product.convert(price, 'ARS')
                                   }
 
                 currency_select.get(app.option)()               
