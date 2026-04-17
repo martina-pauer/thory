@@ -25,7 +25,7 @@ def storage():
                 # Use Decision Map with dicts for get better time in Python 3.9 (match is from 3.10)
                 currency_select: dict [str, str] = {}
                 # Load the currencies from the file with symbol and price in ARS argentian currency
-                with open('data/currencies_to_ars.csv', 'r') as load_currencies:
+                with open('../data/currencies_to_ars.csv', 'r') as load_currencies:
                         text_line: list[str] = load_currencies.readline().split(', ')
                         if not text_line[0].__contains__('Currency'):
                                 # Only Read values not columns names
