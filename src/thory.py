@@ -23,13 +23,17 @@ def storage():
                 product.price = ['ARS', float(app.row[3])]
                 # Only make convertion when the selected currency is diff to ARS       
                 # Use Decision Map with dicts for get better time in Python 3.9 (match is from 3.10)
-                currency_select = {
-                                        'USD':  lambda price = 1410.00: product.convert(price, 'ARS'),
-                                        '€':    lambda price = 1763.26: product.convert(price, 'ARS'),
-                                        '£':    lambda price = 1937.34: product.convert(price, 'ARS')
-                                  }
-
-                currency_select.get(app.option)()               
+                currency_select: dict [str, str] = {}
+                # Load the currencies from the file with symbol and price in ARS argentian currency
+                with open('data/currencies_to_ars.csv', 'r') as load_currencies:
+                        text_line: list[str] = load_currencies.readline().split(', ')
+                        if not text_line[0].__contains__('Currency'):
+                                # Only Read values not columns names
+                                currency_symbol: str = text_line[1]
+                                currency_value: float = float(text_line[0])
+                                # Load the values and symbols from file by manual or automated editing
+                                currency_select.__setitem__(currency_symbol, lambda price = currency_value: product.convert(price, 'ARS'))
+                currency_select.get(app.option)()                       
                 # When select one of defined curreuncies different to ARS make converrtion                     
                 product.count = int(app.row[1])
                 # Storage in database
