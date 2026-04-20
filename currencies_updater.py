@@ -52,10 +52,15 @@ def  update_column_csv(file_name: str, column_index: int, row_index: int, value:
 data_file: str = 'data/currencies_to_ars.csv'
 # From line 2 to last currency row
 currency_value: int = 0
-# Dollars
-update_column_csv(data_file, currency_value, 1, '1364.50')
-# Pounds
-update_column_csv(data_file, currency_value, 2, '1851.90')
-# Euros
-update_column_csv(data_file, currency_value, 3, '1610.93')
-del data_file, currency_value
+# Only could this part when the network is working (use ping for check it when all is ok return 0 status)
+if os.system('ping -c1 8.8.8.8') == 0:
+    # When the wifi connections is checked get conversions from web sources
+    # Dollars
+    update_column_csv(data_file, currency_value, 1, '1364.50')
+    # Pounds
+    update_column_csv(data_file, currency_value, 2, '1851.90')
+    # Euros
+    update_column_csv(data_file, currency_value, 3, '1610.93')
+else:
+    print('\t\nThe Connection To Internet Aren\'t Available.\n')
+del os, data_file, currency_value
