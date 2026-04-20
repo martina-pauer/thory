@@ -48,6 +48,21 @@ def  update_column_csv(file_name: str, column_index: int, row_index: int, value:
     del content, row, text
     updater.close()
     del updater
+
+def scrap_currency(currency_name: str) -> str:
+    '''
+        Select cotizations from "https://www.bna.com.ar/Personas#divisas"
+    '''
+    # Are USD until get other foreign currency
+    selection: int = 2
+    if 'pounds' == currency_name:
+        selection = 5
+    elif 'euros' == currency_name:
+        selection =  8
+    # Load to page       
+    html_response = f'<!DOCTYPE html><head><script type = "text/javascript">document.write(document.querySelectorAll("#divisas td")[{selection}].innerHTML);</script></head><body></body></html>'
+    del selection, select
+    # Render HTML text and then get text from HTML
 # Define updates for currencies
 data_file: str = 'data/currencies_to_ars.csv'
 # From line 2 to last currency row
@@ -56,11 +71,11 @@ currency_value: int = 0
 if os.system('ping -c1 8.8.8.8') == 0:
     # When the wifi connections is checked get conversions from web sources
     # Dollars
-    update_column_csv(data_file, currency_value, 1, '1364.50')
+    update_column_csv(data_file, currency_value, 1, scrap_currency('dollars'))
     # Pounds
-    update_column_csv(data_file, currency_value, 2, '1851.90')
+    update_column_csv(data_file, currency_value, 2, scrap_currency('pounds'))
     # Euros
-    update_column_csv(data_file, currency_value, 3, '1610.93')
+    update_column_csv(data_file, currency_value, 3, scrap_currency('euros'))
 else:
     print('\t\nThe Connection To Internet Aren\'t Available.\n')
 del os, data_file, currency_value
