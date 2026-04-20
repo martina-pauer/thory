@@ -28,8 +28,6 @@ def  update_column_csv(file_name: str, column_index: int, row_index: int, value:
         Update value in column in specific row
         in CSV file.
     '''
-    updater = open(file_name, 'w')
-    
     content: list[list[str]] = get_from_csv(file_name)
     
     row: list[list[str]] = content[row_index]
@@ -39,8 +37,13 @@ def  update_column_csv(file_name: str, column_index: int, row_index: int, value:
     for values in content:
         if values == row:
             values[column_index] = values[column_index].replace(values[column_index], value)
-        text += values
-
+        for column in range(0, values.__len__() - 1):
+            # Format data as CSV output
+            text += f'{values[column]}, '
+        # Add last column to the text
+        text += values[values.__len__() - 1]        
+    # After get the content start writing because empty the file before of make this    
+    updater = open(file_name, 'w')
     updater.write(text)
     del content, row, text
     updater.close()
@@ -48,11 +51,11 @@ def  update_column_csv(file_name: str, column_index: int, row_index: int, value:
 # Define updates for currencies
 data_file: str = 'data/currencies_to_ars.csv'
 # From line 2 to last currency row
-currency_value: int = 1
+currency_value: int = 0
 # Dollars
-update_column_csv(data_file, currency_value, 2, 1364.50)
+update_column_csv(data_file, currency_value, 1, '1364.50')
 # Pounds
-update_column_csv(data_file, currency_value, 3, 1851.90)
+update_column_csv(data_file, currency_value, 2, '1851.90')
 # Euros
-update_column_csv(data_file, currency_value, 4, 1610.93)
+update_column_csv(data_file, currency_value, 3, '1610.93')
 del data_file, currency_value
