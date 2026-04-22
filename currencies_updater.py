@@ -60,9 +60,22 @@ def scrap_currency(currency_name: str) -> str:
     elif 'euros' == currency_name:
         selection =  8
     # Load to page       
-    html_response = f'<!DOCTYPE html><head><script type = "text/javascript">document.write(document.querySelectorAll("#divisas td")[{selection}].innerHTML);</script></head><body></body></html>'
+    js_response = f'document.cookie = "currency_value_thory=" + document.querySelectorAll(\'#divisas td\')[{selection}].innerHTML + "; SamSite=None; Secure"'
     del selection, select
-    # Render HTML text and then get text from HTML
+    # Rescue value from the cookie
+    from flask import Flask
+    from flask import request
+    
+    cookie_value: str = ''
+    app = Flask(__name__)
+    @app.route('/')
+    def scrapping() -> str:
+        if request.method == 'GET':
+            cookie_value: str = request.cookies['currency_value_thory']
+        return 'Nothing'    
+    os.system(f'flask --app {__name__} run')
+    # Send JS to the page because out of the context doesn't work
+    return cookie_value
 # Define updates for currencies
 data_file: str = 'data/currencies_to_ars.csv'
 # From line 2 to last currency row
