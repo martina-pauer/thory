@@ -69,7 +69,7 @@ def scrap_currency(currency_name: str) -> str:
         # Select Sell Prices with 7 chars (the first and next six) of price number
         currency_value += loader_page.text[character]
         
-    del selection, select, loader_page
+    del selection, loader_page
     
     return currency_value
 # Define updates for currencies
@@ -77,7 +77,7 @@ data_file: str = 'data/currencies_to_ars.csv'
 # From line 2 to last currency row
 currency_value: int = 0
 # Only could this part when the network is working (use ping for check it when all is ok return 0 status)
-if os.system('ping -c1 8.8.8.8') == 0:
+if os.system('ping -c1 8.8.8.8') == 256:
     # When the wifi connections is checked get conversions from web sources
     # Dollars
     update_column_csv(data_file, currency_value, 1, scrap_currency('dollars'))
