@@ -54,28 +54,24 @@ def scrap_currency(currency_name: str) -> str:
         Select cotizations from "https://www.bna.com.ar/Personas#divisas"
     '''
     # Are USD until get other foreign currency
-    selection: int = 2
+    selection: int = 39711
     if 'pounds' == currency_name:
-        selection = 5
+        selection = 39942
     elif 'euros' == currency_name:
-        selection =  8
-    # Load to page       
-    js_response = f'document.cookie = "currency_value_thory=" + document.querySelectorAll(\'#divisas td\')[{selection}].innerHTML + "; SamSite=None; Secure"'
-    del selection, select
-    # Rescue value from the cookie
-    from flask import Flask
-    from flask import request
+        selection =  40162
+    # Load page
+    import requests
+           
+    loader_page = requests.get('https://www.bna.com.ar/Personas#divisas')
+    currency_value: str = ''
     
-    cookie_value: str = ''
-    app = Flask(__name__)
-    @app.route('/')
-    def scrapping() -> str:
-        if request.method == 'GET':
-            cookie_value: str = request.cookies['currency_value_thory']
-        return 'Nothing'    
-    os.system(f'flask --app {__name__} run')
-    # Send JS to the page because out of the context doesn't work
-    return cookie_value
+    for character in range(selection, selection + 7):
+        # Select Sell Prices with 7 chars (the first and next six) of price number
+        currency_value += loader_page.text[character]
+        
+    del selection, select, loader_page
+    
+    return currency_value
 # Define updates for currencies
 data_file: str = 'data/currencies_to_ars.csv'
 # From line 2 to last currency row
