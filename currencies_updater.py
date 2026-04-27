@@ -78,7 +78,7 @@ data_file: str = 'data/currencies_to_ars.csv'
 # From line 2 to last currency row
 currency_value: int = 0
 # Only could this part when the network is working (use ping for check it when all is ok return 0 status)
-if os.system('ping -c1 8.8.8.8') == 256:
+if os.system('ping -c1 8.8.8.8') != 512:
     # When the wifi connections is checked get conversions from web sources
     # Dollars
     update_column_csv(data_file, currency_value, 1, scrap_currency('dollars'))
