@@ -55,10 +55,11 @@ def scrap_currency(currency_name: str) -> str:
     '''
     # Are USD until get other foreign currency
     selection: int = 39711
+    # Write the Other index in the text relative to the dollar because the text len is variable
     if 'pounds' == currency_name:
-        selection = 39942
+        selection = selection + 231
     elif 'euros' == currency_name:
-        selection =  40162
+        selection =  selection + 451
     # Load page
     import requests
            
