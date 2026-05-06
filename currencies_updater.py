@@ -54,7 +54,7 @@ def scrap_currency(currency_name: str) -> str:
         Select cotizations from "https://www.bna.com.ar/Personas#divisas"
     '''
     # Are USD until get other foreign currency
-    selection: int = 39711
+    selection: int = 39346
     # Write the Other index in the text relative to the dollar because the text len is variable
     if 'pounds' == currency_name:
         selection = selection + 231
