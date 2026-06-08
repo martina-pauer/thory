@@ -53,24 +53,22 @@ def scrap_currency(currency_name: str) -> str:
     '''
         Select cotizations from "https://www.bna.com.ar/Personas#divisas"
     '''
+    import requests
+
+    loader_page = requests.get('https://www.bna.com.ar/Personas#divisas')
     # Are USD until get other foreign currency
-    selection: int = 40013
+    selection: int = loader_page.text.index('1440')
     # Write the Other index in the text relative to the dollar because the text len is variable
     if 'pounds' == currency_name:
         selection = selection + 231
     elif 'euros' == currency_name:
         selection =  selection + 451
     # Load page
-    import requests
-           
-    loader_page = requests.get('https://www.bna.com.ar/Personas#divisas')
     currency_value: str = ''
     
     for character in range(selection, selection + 7):
         # Select Sell Prices with 7 chars (the first and next six) of price number
         currency_value += loader_page.text[character]
-        
-    del selection, loader_page
     
     return currency_value
 # Define updates for currencies
